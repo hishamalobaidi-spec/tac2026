@@ -89,6 +89,55 @@
 
         .logo-bar img { height: 28px; width: auto; }
 
+        .install-banner {
+            display: none;
+            background: linear-gradient(135deg, var(--accent) 0%, #e63950 100%);
+            color: white;
+            padding: 14px 16px;
+            margin: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(196, 18, 48, 0.3);
+        }
+
+        .install-banner.show { display: block; }
+
+        .install-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .install-icon { font-size: 1.8rem; }
+
+        .install-text strong { font-size: 1rem; display: block; margin-bottom: 2px; }
+        .install-text p { font-size: 0.8rem; opacity: 0.9; margin: 0; }
+
+        .install-buttons { display: flex; gap: 10px; }
+
+        .install-btn-primary {
+            flex: 1;
+            padding: 10px 16px;
+            background: white;
+            color: var(--accent);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .install-btn-dismiss {
+            padding: 10px 16px;
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
         .nav {
             position: fixed;
             bottom: 0;
@@ -534,6 +583,21 @@
         <img src="logo-reading.jpg" alt="University of Reading" onerror="this.style.display='none'">
     </div>
 
+    <!-- Install Banner -->
+    <div class="install-banner" id="installBanner">
+        <div class="install-content">
+            <span class="install-icon">📲</span>
+            <div class="install-text">
+                <strong>Install TAC 2026 App</strong>
+                <p>Add to home screen for offline access</p>
+            </div>
+        </div>
+        <div class="install-buttons">
+            <button id="installBtn" class="install-btn-primary">Install</button>
+            <button id="dismissBtn" class="install-btn-dismiss">Later</button>
+        </div>
+    </div>
+
     <main class="main">
         <!-- Schedule Page -->
         <div class="page active" id="schedulePage">
@@ -757,6 +821,17 @@
                         <p style="color:var(--accent);">tmgrsc@gmail.com</p>
                     </div>
                 </a>
+            </div>
+
+            <h2 class="section-title">Install App</h2>
+            <div class="card" id="installCard" style="cursor:pointer;" onclick="showInstallInstructions()">
+                <div style="display:flex; align-items:center; gap:14px;">
+                    <div style="width:50px; height:50px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">📲</div>
+                    <div>
+                        <h4 style="font-size:0.95rem; margin-bottom:4px;">Add to Home Screen</h4>
+                        <p style="font-size:0.82rem; color:var(--text-light);">Install for offline access & quick launch</p>
+                    </div>
+                </div>
             </div>
 
             <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:24px;">TAC 2026 App • Thermal Methods Group • RSC</p>
@@ -1019,10 +1094,76 @@
             document.getElementById('modalOverlay').classList.remove('active');
         }
 
+        function showInstallInstructions() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            } else {
+                document.getElementById('modalTitle').textContent = '📲 Install App';
+                document.getElementById('modalBody').innerHTML = `
+                    <div style="background:var(--bg); padding:14px; border-radius:10px; margin-bottom:12px;">
+                        <h4 style="margin-bottom:8px;">📱 iPhone / iPad</h4>
+                        <p style="font-size:0.85rem;">1. Tap the <strong>Share</strong> button (square with arrow)</p>
+                        <p style="font-size:0.85rem;">2. Scroll down and tap <strong>"Add to Home Screen"</strong></p>
+                        <p style="font-size:0.85rem;">3. Tap <strong>"Add"</strong></p>
+                    </div>
+                    <div style="background:var(--bg); padding:14px; border-radius:10px;">
+                        <h4 style="margin-bottom:8px;">🤖 Android</h4>
+                        <p style="font-size:0.85rem;">1. Tap the <strong>menu</strong> (⋮ three dots)</p>
+                        <p style="font-size:0.85rem;">2. Tap <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong></p>
+                    </div>
+                    <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted); text-align:center;">The app will appear on your home screen like a regular app!</p>
+                `;
+                document.getElementById('modalOverlay').classList.add('active');
+            }
+        }
+
         // Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js').catch(e => console.log('SW error', e));
         }
+
+        // Install prompt
+        let deferredPrompt;
+        const installBanner = document.getElementById('installBanner');
+        const installBtn = document.getElementById('installBtn');
+        const dismissBtn = document.getElementById('dismissBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBanner.classList.add('show');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                installBanner.classList.remove('show');
+            } else {
+                // Fallback for iOS
+                alert('To install:\\n\\n📱 iPhone/iPad: Tap Share button → "Add to Home Screen"\\n\\n🤖 Android: Tap menu (⋮) → "Add to Home Screen"');
+            }
+        });
+
+        dismissBtn.addEventListener('click', () => {
+            installBanner.classList.remove('show');
+            sessionStorage.setItem('installDismissed', 'true');
+        });
+
+        // Show banner for iOS (no beforeinstallprompt event)
+        window.addEventListener('load', () => {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+            const dismissed = sessionStorage.getItem('installDismissed');
+            
+            if (isIOS && !isStandalone && !dismissed) {
+                installBanner.classList.add('show');
+            }
+        });
     </script>
 </body>
 </html>
