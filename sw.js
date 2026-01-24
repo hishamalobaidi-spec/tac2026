@@ -1,30 +1,21 @@
-const CACHE_NAME = 'tac2026-v4';
+const CACHE_NAME = 'tac2026-v5';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/icon-192.png',
-    '/icon-512.png',
-    '/palmer-103.jpg',
-    '/palmer-109.jpg',
-    '/foyer.jpg',
-    '/dinner.jpg',
-    '/exhibition.jpg',
-    '/logo-tmg.jpg',
-    '/logo-rsc.jpg',
-    '/logo-reading.jpg'
+    './',
+    './index.html',
+    './manifest.json',
+    './icon-192.png',
+    './icon-512.png'
 ];
 
-// Install event
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
+            .catch(err => console.log('Cache error:', err))
     );
     self.skipWaiting();
 });
 
-// Activate event
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
@@ -40,26 +31,22 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Fetch event
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => {
                 if (response) return response;
-                
                 return fetch(event.request).then(response => {
-                    if (!response || response.status !== 200 || response.type !== 'basic' || event.request.method !== 'GET') {
+                    if (!response || response.status !== 200) {
                         return response;
                     }
-                    
                     const responseToCache = response.clone();
                     caches.open(CACHE_NAME).then(cache => {
                         cache.put(event.request, responseToCache);
                     });
-                    
                     return response;
                 });
             })
-            .catch(() => caches.match('/index.html'))
+            .catch(() => caches.match('./index.html'))
     );
 });

@@ -7,42 +7,31 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="TAC 2026">
-    <meta name="description" content="TAC 2026 - Advances in Thermal Analysis and Calorimetry Conference App">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="description" content="TAC 2026 - RSC Thermal Methods Group Conference">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
     <title>TAC 2026 | Thermal Methods Group</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #1a4d7c;
             --primary-light: #2a6ba8;
-            --primary-dark: #0d3a5c;
             --accent: #c41230;
-            --accent-light: #e63950;
             --bg: #f0f4f8;
             --card-bg: #ffffff;
             --text: #1a1a2e;
             --text-light: #4a5568;
             --text-muted: #718096;
             --border: #e2e8f0;
-            --success: #38a169;
             --shadow: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-lg: 0 4px 20px rgba(0,0,0,0.12);
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             padding-bottom: 80px;
         }
-
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
@@ -50,45 +39,18 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow-lg);
         }
-
-        .header-top {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 4px;
-        }
-
-        .header-logo {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 0.7rem;
-        }
-
         .header h1 { font-size: 1.4rem; font-weight: 700; }
-        .header p { font-size: 0.8rem; opacity: 0.9; margin-left: 52px; }
-
+        .header p { font-size: 0.8rem; opacity: 0.9; }
         .logo-bar {
             background: white;
-            padding: 10px 16px;
+            padding: 12px 16px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
             border-bottom: 1px solid var(--border);
         }
-
-        .logo-bar img { height: 28px; width: auto; }
-
+        .logo-bar img { height: 50px; width: auto; }
         .install-banner {
             display: none;
             background: linear-gradient(135deg, var(--accent) 0%, #e63950 100%);
@@ -96,187 +58,64 @@
             padding: 14px 16px;
             margin: 12px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(196, 18, 48, 0.3);
         }
-
         .install-banner.show { display: block; }
-
-        .install-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
+        .install-content { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .install-icon { font-size: 1.8rem; }
-
-        .install-text strong { font-size: 1rem; display: block; margin-bottom: 2px; }
+        .install-text strong { display: block; margin-bottom: 2px; }
         .install-text p { font-size: 0.8rem; opacity: 0.9; margin: 0; }
-
         .install-buttons { display: flex; gap: 10px; }
-
         .install-btn-primary {
-            flex: 1;
-            padding: 10px 16px;
-            background: white;
-            color: var(--accent);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
+            flex: 1; padding: 10px 16px; background: white; color: var(--accent);
+            border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
         }
-
         .install-btn-dismiss {
-            padding: 10px 16px;
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.5);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            cursor: pointer;
+            padding: 10px 16px; background: transparent; color: white;
+            border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; cursor: pointer;
         }
-
         .nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: fixed; bottom: 0; left: 0; right: 0;
             background: var(--card-bg);
-            display: flex;
-            justify-content: space-around;
+            display: flex; justify-content: space-around;
             padding: 6px 0 env(safe-area-inset-bottom, 8px);
             box-shadow: 0 -2px 16px rgba(0,0,0,0.1);
             z-index: 100;
         }
-
         .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8px 12px;
-            color: var(--text-muted);
-            font-size: 0.65rem;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            background: none;
-            transition: color 0.2s;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 8px 12px; color: var(--text-muted); font-size: 0.65rem;
+            font-weight: 500; cursor: pointer; border: none; background: none;
         }
-
         .nav-item.active { color: var(--accent); }
         .nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
-
-        .main {
-            padding: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
+        .main { padding: 16px; max-width: 600px; margin: 0 auto; }
         .page { display: none; }
         .page.active { display: block; }
-
         .card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: var(--shadow);
+            background: var(--card-bg); border-radius: 14px;
+            padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow);
         }
-
-        .day-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-        }
-
+        .day-tabs { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; }
         .day-tab {
-            padding: 12px 16px;
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            white-space: nowrap;
-            text-align: center;
-            min-width: 100px;
+            padding: 12px 16px; background: var(--card-bg); border: 2px solid var(--border);
+            border-radius: 12px; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+            white-space: nowrap; text-align: center; min-width: 100px;
         }
-
-        .day-tab small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .day-tab.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
+        .day-tab small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .day-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
         .day-tab.active small { color: rgba(255,255,255,0.8); }
-
-        .session-card {
-            border-left: 4px solid var(--accent);
-            cursor: pointer;
-            position: relative;
-            padding-right: 44px;
-        }
-
-        .session-time {
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .session-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--primary-dark);
-            line-height: 1.3;
-        }
-
-        .session-speaker {
-            font-size: 0.82rem;
-            color: var(--text-light);
-            margin-bottom: 8px;
-        }
-
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
+        .session-card { border-left: 4px solid var(--accent); cursor: pointer; position: relative; padding-right: 44px; }
+        .session-time { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+        .session-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--primary); line-height: 1.3; }
+        .session-speaker { font-size: 0.82rem; color: var(--text-light); margin-bottom: 8px; }
         .session-room {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            background: var(--bg);
-            padding: 4px 10px;
-            border-radius: 12px;
+            display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem;
+            color: var(--text-muted); background: var(--bg); padding: 4px 10px; border-radius: 12px;
         }
-
         .session-track {
-            display: inline-block;
-            font-size: 0.68rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
+            display: inline-block; font-size: 0.68rem; padding: 4px 10px;
+            border-radius: 12px; font-weight: 600; text-transform: uppercase;
         }
-
         .track-short-course { background: #dbeafe; color: #1e40af; }
         .track-plenary { background: #fef3c7; color: #92400e; }
         .track-research { background: #d1fae5; color: #065f46; }
@@ -284,306 +123,96 @@
         .track-ecs { background: #fce7f3; color: #9d174d; }
         .track-social { background: #fed7aa; color: #c2410c; }
         .track-break { background: #e5e7eb; color: #374151; }
-
         .bookmark-btn {
-            position: absolute;
-            top: 12px;
-            right: 8px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            color: var(--text-muted);
+            position: absolute; top: 12px; right: 8px; background: none;
+            border: none; cursor: pointer; padding: 8px; color: var(--text-muted);
         }
-
         .bookmark-btn.active { color: var(--accent); }
-
         .search-bar {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
+            display: flex; align-items: center; background: var(--card-bg);
+            border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; box-shadow: var(--shadow);
         }
-
-        .search-bar input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 0.95rem;
-            margin-left: 12px;
-            background: transparent;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
+        .search-bar input { flex: 1; border: none; outline: none; font-size: 0.95rem; margin-left: 12px; background: transparent; }
+        .filter-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
         .filter-tab {
-            padding: 7px 14px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
+            padding: 7px 14px; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 20px; font-size: 0.75rem; font-weight: 500; cursor: pointer;
         }
-
-        .filter-tab.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
+        .filter-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .section-title { font-size: 1rem; color: var(--primary); margin-bottom: 14px; font-weight: 600; }
         .venue-section { margin-bottom: 24px; }
-
-        .venue-section h2 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .venue-section h2 { font-size: 1rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
         .info-row:last-child { border-bottom: none; }
-
         .info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--bg);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            flex-shrink: 0;
+            width: 40px; height: 40px; background: var(--bg); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0;
         }
-
         .info-content h4 { font-size: 0.88rem; margin-bottom: 4px; }
         .info-content p { font-size: 0.82rem; color: var(--text-light); line-height: 1.5; }
         .info-content a { color: var(--accent); text-decoration: none; font-weight: 500; }
-
-        .empty-state {
-            text-align: center;
-            padding: 48px 24px;
-            color: var(--text-muted);
-        }
-
-        .empty-state svg { width: 56px; height: 56px; margin-bottom: 16px; opacity: 0.4; }
-        .empty-state p { font-size: 0.9rem; line-height: 1.5; }
-
-        .section-title {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 14px;
-            font-weight: 600;
-        }
-
-        .day-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
+        .quick-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
         .quick-link {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--text);
+            background: var(--card-bg); border-radius: 12px; padding: 16px;
+            text-align: center; box-shadow: var(--shadow); cursor: pointer; text-decoration: none; color: var(--text);
         }
-
         .quick-link svg { width: 28px; height: 28px; color: var(--primary); margin-bottom: 8px; }
         .quick-link span { display: block; font-size: 0.8rem; font-weight: 500; }
-
         .btn-primary {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 16px;
+            display: block; width: 100%; padding: 14px; background: var(--accent);
+            color: white; border: none; border-radius: 10px; font-size: 0.95rem;
+            font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; margin-top: 16px;
         }
-
-        .fee-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-            font-size: 0.85rem;
-        }
-
-        .fee-table th, .fee-table td {
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .fee-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem; }
+        .fee-table th, .fee-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
         .fee-table th { background: var(--bg); font-weight: 600; color: var(--primary); }
         .fee-table .price { font-weight: 600; color: var(--accent); }
-
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 200;
-            display: none;
-            align-items: flex-end;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 200; display: none; align-items: flex-end; justify-content: center;
         }
-
         .modal-overlay.active { display: flex; }
-
         .modal {
-            background: var(--card-bg);
-            border-radius: 20px 20px 0 0;
-            padding: 24px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
+            background: var(--card-bg); border-radius: 20px 20px 0 0; padding: 24px;
+            width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto;
         }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-
+        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
         .modal-close {
-            background: var(--bg);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            background: var(--bg); border: none; width: 36px; height: 36px;
+            border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
-
-        .modal h2 {
-            font-size: 1.15rem;
-            color: var(--primary-dark);
-            flex: 1;
-            padding-right: 12px;
-            line-height: 1.3;
-        }
-
+        .modal h2 { font-size: 1.15rem; color: var(--primary); flex: 1; padding-right: 12px; line-height: 1.3; }
         .modal-body p { color: var(--text-light); line-height: 1.6; margin-bottom: 12px; font-size: 0.9rem; }
-
-        .modal-meta {
-            background: var(--bg);
-            border-radius: 12px;
-            padding: 14px;
-            margin-top: 16px;
-        }
-
-        .modal-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 0;
-        }
-
-        .modal-meta-row svg { color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; }
+        .modal-meta { background: var(--bg); border-radius: 12px; padding: 14px; margin-top: 16px; }
+        .modal-meta-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
         .modal-meta-row span { font-size: 0.85rem; }
-
-        .room-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+        .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); }
+        .empty-state svg { width: 56px; height: 56px; margin-bottom: 16px; opacity: 0.4; }
+        .empty-state p { font-size: 0.9rem; line-height: 1.5; }
+        .day-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white; padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; font-weight: 600; font-size: 0.9rem;
         }
-
+        .room-card { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
         .room-card:last-child { border-bottom: none; }
-
         .room-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--bg);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
+            width: 44px; height: 44px; background: var(--bg); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: var(--primary);
         }
-
         .room-info h4 { font-size: 0.9rem; margin-bottom: 2px; }
         .room-info p { font-size: 0.78rem; color: var(--text-muted); }
-
-        .venue-img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            background: var(--bg);
-        }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="header-top">
-            <div class="header-logo">TMG</div>
-            <h1>TAC 2026</h1>
-        </div>
+        <h1>TAC 2026</h1>
         <p>30 Mar - 1 Apr 2026 • University of Reading</p>
     </header>
 
     <div class="logo-bar">
-        <img src="logo-tmg.jpg" alt="TMG" onerror="this.style.display='none'">
-        <img src="logo-rsc.jpg" alt="RSC" onerror="this.style.display='none'">
-        <img src="logo-reading.jpg" alt="University of Reading" onerror="this.style.display='none'">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAEYCAYAAACA1ogtAABr6UlEQVR4nO3ddZwc5f0H8M/zzKzvnktyycWNEA8JrsECwd0p0pbS0tJCqbe0yA9qQKGlAi0uLdDiBAsQLEbc3S6XnK/vzjzP749nZk5273JJNsnJ9/1qaLIyO7Yz332e7/N9mJRSghBCCCGE5Aw/2CtACCGEENLTUIBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFdk9K9YcQQgghnUIBFmmXNE0VWDEGMAYpBKQpDvZqEUIIIV0ek5KaJkgWdmAFwKhvBDQNel6w+TkJgLODt36EEEJIF6Yf7BUgXY8UAoxz1Lz8Nrb96QnEN24F0zSEJo9BxTeuQMFJRwKs+XWEEEIIaY1asEgr0jTBNA1bf/93rL3tN9C8ATCPC5ASIpYANA3F04/H0D/8DN7Blc7rCSGEENKMAizSTEiAMyTWb8H8w84CADCX7uRdqdYqiXRdI9x9SjH29ccQnDAa0jDBdAqyCCGEEBv17xCHFCYAoPaND2DUN4G5XZCG6YwilKYJaQq4Sgph1DdiyZnXIbJwOZiuqYR4QgghhACgAIu0xDkgJWpff191C4rsIwZl2oAW9MNoDKsga9EKME2DbOf1hBBCSG9DARYBAEhTJayH5y5G46fzoQcDHZZkkIYJLeBHurYeK6/6vhppCFC9LEIIIQQUYBGbVMFU4+x5ENEY0InEdWkY0AvyEF2+BquuvwOMc2rFIoQQQkABFrFZ5RbCXy0F03Un4NodmTbgKi5EzX9nYvtfn1VdhQblYxFCCOndaBQhcYqKpnbWYv6kGTAjUSvI6vypwRiDEYli/MynkH/cVNXlqFH8TgghpHeiOyBxcq12Pf8aUturwT2e7MEVg1PdPQNnYJqGNd+9E2Ykpl5LsTshhJBeigIs4kx50/Dxl6poaDvdg9IQkMlU1iBLmgJaKIDowuXYdNefKB+LEEJIr0YBVm8nJRhjMCMxxFauB/d6IEXrliemaTCbwuh381UoOuNEGA1NWQuLyrQBvagA2x99FvF1m6h0AyGEkF6LAqxeTgoBMIamz+Yjvmo9uM+b2bUnJcA4Ss47DSP/eT88/ftAxOJOYnxLTNMg4nGsv/3e5vcSQgghvQwFWL0dY4CQqHr8xXafF4kkvEMHwDukEprfh+EP/UpNj5Pl5dI0oRfkoeaVmdjx2IuqFYuqvBNCCOllKMDqzaQE4xxmLI7wvCXgfm9Glx7T1PNFJx8DV1EBRDKF4rNPxsCffwfpmjo12rDtYk0BLS+Ajb9+SHUnWhXiCSGEkN6CAqxezM61iq1aj/TOWjCXK0v3IADOUTT9BABwktcrbroS3qEDIeJxJ0m++T0S3OtBcusObP6/vwCMUS4WIYSQXoUCrN7MGi1Y+9p7MMMRNYKwJcYgUim4+5QiOOlQ9ZCuAVJCL8zHsN//FCKWAGOZp5E0TOj5IZXwvnYTjSokhBDSq1CA1YsxTYNMG6h76yNwvw9StM6VYpxDROMoOOYwuPuUqucZc/Kqis85BeXXXACjriHrqELm0mCGI9j6wOMq14u6CQkhhPQSFGD1UtJUowcji1YgunQ1NJ8XEJkBkBQCxWefov7RsgHKCpgG/PRmaHlByLSBtlnv0lAJ7zuffVW1YlHZBkIIIb0EBVi9ld09+Pr7Ko+qve7BinIUTDtKPdRi6hu7y883ZAAqb/u6SmbXMhPemabBjESw/sf37b9tIYQQQroYCrB6qVbdgz5vx92DZcVO92Db10BKVNx0BbyD+kMkkhmvkaYJPT8Pta++j8bZ81RgZlIrFiGEkJ6NAqxeaJ+7B22MQZoCemE+Kr55BYympsxEeet1kBJbfvc369+52xZCCCGkK6IAqzfax+7BVi/VVCtWnxsugX/4ELW8rK1YIdS9/bFqxWLUikUIIaRnowCrF8pF92Dzi1WNK1dRAQb9+laY0Xj2YIwzyHQa1U+9YrVg0YhCQgghPRcFWL1MzroHW2BcjQ4sOf90hA4bCzMczZinUNXFysOul96iuliEEEJ6PAqwepscdg82vweqervbhf633gCRSoNlafFiLg1GXQPVxSKEENLjUYDVy+S0e7DV+zRIKVFy/mkIjj8EZjSWMYWOqouVj53PvYrY6g1qFCK1YhFCCOmBKMDqRfZH96CDATAFuNuFskvPgojFwXi26u46jLoG7HzmvzRHISGEkB6LAqzeZH90D7Z8uz2i8PqL4R1cCZFIZB1RqOUFUf3sq0jX1KmyDtRVSAghpIehAKsX2V/dg80LaB5RWPHNK2A2ZZlAWkpwrxfxtRuw68U3rFpaZvblEUIIId0UBVi9xH7tHmzBru7e54ZL4B0yIHt1dyGg+f2ofuoViGRKtaRRIxYhhJAehAKs3sLpHvwAIpb77sGWy7FbsYrPmma1YrVZjhDQgn40fbkQda9/AEatWIQQQnoYCrB6A6m6B0Uiido33gf374fuwZbLskow9Lv5arhKCiHTRpZ1kmAuHTueelnlYHGaP4cQQkjPQQFWL6CCKYbGj+cgunAFtIB/v3QPOqwior7hg1B48tEwmiJgeusWM2kKaMEAGmZ9ifiajVR4lBBCSI9CAVZvwYDa195XQUzbxiK7e7BP6b51D7b9QClRcdOV4B531oCO6RrMcARbH/qneoBGExJCCOkhKMDq6aQE0zSka+tR+9YsaEF/xkTLTOMwI1EUnzVNdQ+ae9892HKZUkrkHzcV+UdPhhHOzMWSpoCeF0TNy+8gVV1DJRsIIYT0GBRg9XB2MFU/8xMk1m8G93ozgxipKrGXXjA9tx9utVqVX3keZCoNsDanm5RgbjdSO3ah5qW3rPWlZHdCCCHdHwVYPZ11hGtfez97CxFjEPEEfMMGIu/IiQCkKrWQA3bh0aIZJ7VfeFQIcK8H1c++CmmYmaMbCSGEkG6IAqyeTEgwriGxfjPq3/sUWiiQOXpQ02BGYyi96AxowQCkIfa5e7B54S0Kj379MphN0czCo0JAC/gRmb8ETV98RSUbCCGE9AgUYPVgdjBV+8aHSO+qBXO5Mgt6mia414vis09W/85VcAV7caoVq/SSGXCVFkGm05lJ9pxBpNKofurlnH42IYQQcrBQgNWTcQ4IidrX3wfzuJ1ioy2fN2NxBCeNRnDcIVZCfI5PCc4gpYR3UH8UnnI0zHA0YxJoO9m99vUPKNmdEEJIj0ABVg8lTQHGOcJfLUXjp/OhBwOZowc5h0gkUX7Z2WAuff91zVnBUp+rL2j3eeZ2I1W1k5LdCSGE9AgUYPVU9tQ4r70PEc0yNQ4AaRjQ8/NQeNrxAJDRspQrjGuqZMPxhyMwbhTMaCyjcjsluxNCCOlJKMDqiSQAZ2qcD7JPjWPVvio44XD4hg5QBUj313Q1DICpAqiyS2ZAxBKZwRwluxNCCOlBKMDqgaQwwRhD40dfdjA1DoM0TJRdepZKbM9SaT2X7NIPpRefScnuhBBCejwKsHoiayTgjidfavd5mU7D3bcM+SccoR7KdXJ7W1yVbOhUsvsbH1KyOyGEkG6NAqyeRqhCoYmNW1H/bnu1rziMpgiKzzwR7vKSnEyN0ymdSXZ3uZCq2onGWV+oh0yaAJoQQkj3QwFWDyOFCkh2vfA60rvqste+EhLc7UL5Vecf0HVrlew+4ZCsye6Amjtx5/OvqX/ur7wwQgghZD+iAKuHYRqHSKex66W3sia3g3OY0RiCk8ci74iJkNZk0Adm5WAVNvWg+MyTsia7S1NACwVQ/+EXiK1cp3K3BLViEUII6V4owOpBVHcaQ2zJKkSXr4Xm82YkrzPOIeJJlF9+NpiuAQd6pJ414XPxWdPAA76sn890HWZjGDufexVAc6scIYQQ0l1QgNWjSIAB1U//FyKeANomrjMGkUzC3b8PSi6Yrh46wPWmmMYhhUBo4hjkHzUJRiSakWAvhQnu96LunY8hTfOAryMhhBCyryjA6imkSm5P1zWg5n/vQgv6s1duj8aQf/RkldwuDlBye1tCApyh/KrzIdMGMuo1CAnN70N08Uo0fbZAjXqkZHdCCCHdCAVYPYQ0BcAYdjz2IhLrN4N7vdlLHEig9MIz1N8PUsxit1gVnX483H3LIFKpzECPM4hEEjuff9V6gMo1EEII6T4owOoJJACNWwHJa+B+X2ZyO2MQiQR8IwajaPoJ6qH9XfuqPUzVxHKVFqHguKkQ0bhTiNQmTQEt6EfDB1/AjMapJhYhhJBuhQKsHkAKEwxQldsXr8xauZ1pGsxwFKUXTocW8EEaxsHpHrTZNbGuvTD7ekgJ7vUivmYD6t6apR6ibkJCCCHdBAVYPQFjqnvwyfanmJHpNPTiQpRfeZ56Cz+4h97+/LyjJsM7pBIikcgeaDFg13/eVH+ns5UQQkg3Qbes7k4IMMYQX7MRdTM/yV65XddgNIZResF0+EYMVpXbD3KABWsyZy3oR9H0E6xuwLajCQV4wI+mT+erqXM4dRMSQgjpHijA6uaklABj2PbIkzBq6sFcegeV28/rYrniqsWqz1XnqaT8tl2AUoK73Uhur6apc0i3IaX6XgohYQoJUwiYQkAI9ZiQUn1vCSE9mn6wV4DsA7s0Q20Dal97H1peIDMAaVu5HQewcvtuMI0DUsI/diQCY0YgunQVuL9tcVQJpqupc0ovPrNXT50jpOwyATLPchz2Zv2yLWdP2MHMnlA96rk7j6SUzrZzzqxlsxY93u1/likE1G8kBp7j9SKEHFwUYHVj0hRguoa6tz5EYsMWuEqLVfJ6C4xzmPE4yi9TldulYQB61zns0jTBXS4UTT8e4TmLoAUDkMJo8byAFgygftaXiK/bDN+wgU4drd6GM9bRvfqgOxjrl+tgaU+YQoCBgXMGrcU6xBIp1IdjaAjHEUumkTZMcMag6xx+jxt5AS8KQj4EfR5obbrqTSEBSHDGKNgipJvrOndasmfs0gzxJLY9/CS4z5s5pYxdmmHYYJReMkO1eHWR1itHi6lztvzu7+1OnWPsqkXd27PQ79vXqFGTvPeculJKMMbw68ffxtzlmxDweVSLyUFimibuu/kcDOtf6rQeMcZw9xMz8fmSDQjuZv0YAxIpA0MrSvC7W84FY2yP4zJh7ZOqmkbc+sDLzr87onGGxmgCN51/DM46egxMIaHtRaBuv88OjrbXNOLLZRvx5fJNWLGhGlt21qMhHEcilUYqbapAjDFonMGl6/C6dYQCXvQpCmFw32KMHdoXE0dWYsyQvsgLeGFHqULIfW7hI4QcPL3nLtXDSKGmkGmYPRfheUvgKipQyestME2DUVuP/t+7Dq6SQkjDAOtCrVdAm6lzjp6Mho++hJ4XbN3VKQWY24Xa1z9Av5uvPvgJ+geYlWaHuSs2443PlqMg5IN5kHLRGANSaRM/vuZUZ93sx+ev3II3PluOwt2tnxUzvDtnJS46aQKOGDsYphAZrTkdEUJC1xiemzkfL763AIX5gd3uE13nqGuIYPqRo611l9iTJje7O9IOymZ+uRLPvjsPny5ej+q6sFonXYNL16BzDs4ZvB6X6iq0ek+llIin0ojEk9hSXY/PlmyAkBJet47+ZQWYOnoQzjhyNKYdNsIKtggh3VXXutuSzrN+rW//y9PW6LvMFgNpGNDy81B22dnqLV01MBEC0HUUn3Uy6mfOtlq1mm+W0hTQ/D6E5y7u1d2EAZ8bBUEf8gM+mAdpAmzGgHTahJ7lXNqT9dM0jtrGKJ54aw6OHDsYe9KGJa33x5NpvPD+ApQVh+B1u3Y7wFTXONKGgMe155c9IZu77WYtWIP7n34fny1ZDyElAl4PCoJ+MAYrgV2tpR2QtV0v1fqlw+MGmJWrJYREVU0Tnn9XBYz9ywvwg8tOwnUzjnA+mxDSvVCA1Q1JU4BpHI2z56H2zQ+h54Uy5x3UNBgNjSg640T4Rw2FFKLLBliMq27LotOPh16UD5lOZ9TEYi4X0jt7bzchAGtUmnD+HAyMWYnZWZ7bk/UzhUDQ58bbX6zA5up6DCgv7HSXmDAFNI3j7S9WYMXGahTm+WF0okXPWfc97F611yueTONnf30dj7+uRrTmBXzqeblnx6NlANbyh5HbpcPrdkHjHOu27sLbXyzHdTOOUC+h+IqQbqdr3nFJx5iqEbXld39TLTntVEJnmo7K277u/LvL4mrqHN/QAQhNGQczllkTC1KAeVQ3IaTsdd2EPZFL17CrPoLn350PoPOjAe0g7Im35kDjfL+WPLCDqy3V9Zhx21/xl5dnI+j3IOT3OoFkex/PYI0O5MzJ2eKctZvALmVzgOp1uxD0e/bbdhFC9j+6S3Uz0hRgjCO6aCXqZ34CPT+UkXvllGaYOBp5R05USdJdLbm9LaEmqy6ecRJkMu0kv9vadhMyzjOmA+rpNM6ha53/09mcJsbYHi1X13hOZlkSQsLvdePFDxYilkiBa3y3VR7shPEFq7bi00XrEfR7IPbTeWAHVxuqanH2D/+OuSs2o6wo5LTUtUfjHJrGIQAk0wYisSQaowk0RuMIx5LOyEIG1dWpaTwj4BJWHS1CSPfVu/pYegQJMGDHP1+ESKWhBTPvdIwziGQK/W65FkzTVADWxQOs5m7CE6AXPUDdhFk0ROKoq48gZZid6pLSON9tojRjDMlUGtFEqlPrwBiQSplIG/veRSmkhM/rwqpN1Xjr8xW44MTxMK3uv9154q0vEU+m4Pe6YJi5D0TUyE2grimGy37xBDZsr0FRnh9pI3OUq41zBimBxmgcppAoCPowoLwQpQVBBLxugAGptIGGcAI1jRHUNcUQjcTBGIPP44LXrYP6AgnpOXrP3akHsPOo4ms3ofrp/6nRdm2nxeEcZjiK0GFjUXL+6dZ7unZwBSCjm7Bh1hfZRxN6et9oQrt147oZR+D4CUPhcbs67BazyzrsaojgybfmtPs6O69o0shKnH74IZ1LpmYqB6qyrMBZt33popNSQtM4nnx7Di44cXyHOVhCSmico6q2CW98ukx10+2n0ZT2Z33vgZewZN12lBYEOwyuNI0jHEtC5wynTh2Fc44bhymHDEBlWQH8Xner1xqmQFM0gc3V9Vi8dhs+X7IBny/diA1VtZASKAj6OhVkEkK6NgqwuhMr92jrA4/DaGyySi+0uegzBpk20P/7N4C7Xda8gwdndfeYPZpwxkmof+cTGk1osWOei06asEfv27qrAU+8NafdNhHGVIA1cUR/fP+yE/d63fYkvrIqFjiEkAj6PPhs8XrMX7UFk0dWtluyQQgJrjG88N4CVNU0oaQg0Knk9j1lf/5z787Hfz5ciNKCUMfBFeeob4rhiDGD8Mvrp+OYcUMy192uFwY1mrEoz4+iPD8mDO+Hq6dPRVM0gY8XrsWL73+FWQvWoqExRtPpENLNUYDVTUghwDQN8fWbsfPZV6EX5GUNrkQiAe/QASg+62RnKp3ugroJO9ZRQnVLdu5QfTi229faXYSGKfaoFpXG9y4Py8wyUlCzWtKefHMOJo+szPo+uzRDImXghfcWwOd1Zc1R2teSBtJ6f1M0gfueek8VTd1NvlV9OIZrzpiKP9xyHtwuXZVqEBKMM6cMQ8t1UoMHm8s4gAF5AS9mHD0GM44eg+Ubd+D3z36wR6UrCCFdT/e5+/Z21p11892PwGwKZ01aZ5oGMxxD369dBM1vVXbvTvVzaDRhh7p7kruUMmtOmGkKhPxevPHZMuyobYLGeUYleGEKMAAz56zEsvVV8HvcrV4jpWoZ2l0V+d0RQnWvPv/eAqzesgs+j6vd5WkaR0M4hounTcTDP7gIbl2HKQQ4Y9A0bo0WzHxfq9GF1nGyRxAKITF6UB889pPLcd/NZ0Ni3+drJIQcHL3n7tSNSVPlXjXOnofqp16BXpifOXLQbr0a3B99brys27VeOWg0YY/EOUMskcLpRxyCyvJCJNOGE3xIAG6XhqqaJrz4/lcAkNE6xezSDG9+6fy95bKj8SSOHDMY44f3UyMS9zIo4ZzDMAWef3cBfG693eCKM4Z4IoXhA8rwwPcucCZ83pNq9C2pqXRUGQch1AjC4vwAtWER0o11wztwb6RqXW353d/sn78Zr2CaBrMpiopvXgFXUX73a72ytO4mtIqOtn2NywWjrhF1b88CgIxEf9L1cMYQTxoYXlmKc48bi0gs2SoYEULC53Hh+ffmI5k2Wj1ntwotWrsNnyxc79SgsjEwmELi2jOnqhanvQy4VesVsHT9dixdvx0+r7vdZTHGkEgZuOOqkxHye7J2fe4tzpk1IpF+OBDSnVGA1cVJU805WPvqe6h7a1b2uleMQcQT8AysQJ8bLum+rVcAdRP2YJypulBXnT4FQb+nVYK6kKom1tL1O/DunFWq6nqbBPYn35yDWCLZaoJmzhhiyRRGDynHtMNGIhxN7NUEzvY6AMAnC9cjmki1uxwVLKZwyKBynH3MGGckZK7tbvJqQkjXRnemrsya5Vem0tj4m4dU3lWWH7VM4zCjcQz8+S1q0udu2nrloG7CHolzjmg8hX6lBThh4vCMVixAnbZ2aQnGmNPttrMujFdnL0WwTeuV6npM49Jpk+HSNaQMc6/PfTsRfcGqLU5Nq+zbwRBLpnHyYSPhdasWs278bSOE7CcUYHVhdt2rbY88hcj8pdBCQRU8tcA4hxmJIXTYGPS55oIuPedgZ+1JN2H9Ox8BoG7C7sKeDPmaM6Zm/FYwhUDI58FHX63F0vVV4JzBsAqa/vuDhdi+qxEel+YEPgxAKm2iT3EIl5w8CQD2egShnUxuCoH122vh1rV2u+ikVCMfjxg7uNPLt/Oq9uYPIaR76t534p5MqG6+dE0dtj74OLRQILNrEAA4h4gn0P/7N4DpmtPq1a11optQCgHu86D6uVchUqmuPxUQAdBc3uHkKSMxbmgFoolUq6BI0zii8aTTiqVrHMm0gWffnQdvm/wqrnGE40mcedSh6Fearx7b2zwoK5gKR5PY1RCGrmlZp+1hsCeq9mJYvxL1WCc+086r2ps/hJDuqXcUEOqGpBBguob1P7ofya1VcBVnFhVlmgajvhFFZ56I0ovOcPK1egSn6Og01M/MLDoKoboJIwtXILZiHYLjD+kRrXc9nR0u+DwuXHbqZPzw4f8h6HNDWNPdqODFg1c/WYIfXHYSygpDeG/OKixZV4WCoK9V96AQEl63jmvOmLrP6yWtdWuMxhFLpK3AJlt/PINpmMgL+lBaGGy1TRnLtCrqb9nZgB889IrzGZ0lpIRL1/DHW85Hn+KQszxCSPdAAVYXJE0TTFeJ7Tv+9R+4irJUbAdUMrtLx8Cf3AzGeetpZbq55m7C41VZCiONjNsT5xCJJGLL1yI4bpRV1f3AryvZc1JKXHTSBDz4wiw0xRLQNW4V3gQ8bh1bqhvw8keLcNN5x+DxN77IaJTlnCEcS+K4CUMxedQAp7jq3q8QAAbEk2kYhgnO2s/BElIFdj6PazfbqBqTI7EkZn65UhVBRdawLQNjqiirx60jlky1XEVCSDdBt6OuRkgwTUO6ph5rb/0NNL8PUmYGTkzXka6pR59rL0TekZOs1qsedDi5moPFO7AffMMHQcSTWafEYQyofe099ZcetPk9XdowUVYYwlnHjsks2SAl3C4Nr36yFIvWbsOnizcg6PO0Ls3AGExT4OrpU51uu1wQQnaqUKluFRK11qbD13LOkB/07d2fgG+fKtMTQg4euiV1JVJCCgFpmFhxxXeR3FoF7vVkjpBjDDKVgqu8BJW33dgz8q6ykKYJ5tJRdPrxEIlkxqTVUpjQQkHUv/cp4us2qecpKbhbuXr6VPi9qo6Uza6JtWLjDnzrt/9WLbUtzm9V5DONkQPKccaRo51pdPaJtXitRQX8dudwBJA2RIt13v05Zwqx138IId0TBVhdiDQMMF3D1j/8A3UzP85esR1W7lVDGEPuuR3ewZU9N/fIKs9QPGMauM8HtN0X0pqbcFctGt77VD1Eowm7BW5NhzN+WD8cO2EIwrFEq1YsxhhShok1W3ZC13mrEX12VfiLp02A3+uGaU2jsy/s9we8brh0TSXTZ12ommMwnkwhGk92evka5xl/KIGdkJ7t4NyV7WSLA/28/XgX/CMNA8zlQvVTr2DjLx+Au6QIMm1kbALTNRh1DSg59xT0ue6inpXY3gbTOCAlguMPQWDsSJjxRJZuQlVoNLp0dYuHDv7x3O05SiCtFqBrzpiKLL3gYADcLj1jN6YNE6WFQVx2ymQAe1+aIZv8oA9Bvz3Bc+ZypVStXOFYEtX1Yeexjggh0RiJN/+Jqv+PxDofoO03B+taTM/T813h+f3swCa5S9UF5gQEQmQfCm3/ks3x8125lYfpOqqfegWrrr8DWjCQ/Zywio7qxQUY+sefqxOnB3YNtmR3ExZOOwrhLxeqfSOMFs+r0YR1782GSCRVl2oXIk1TdV327MO0V7jGIQGcOnUURg/ug7XbdsHndrWZxLn1F0HTOOqbYrjytLGoLC90ktv3eVoZ63sU9LlRXhTC1p0NcLuzX5s1xtGYSGDVpmqMG9bP+uzs+YEAEPR7cOrho5wkdXs0YCSexMLV2w7OV/ggX4vpeXr+QD4vTQGwAx8DHLgAywoGmKZBxBIQ6TT0/FDW+46IJyBSuX9exBMQiWTXmlrFFABnqPnfu1j99R9DCwVUK02WXCKmaUjXNmDkY/fBO6h/j269clh3n4LjpmLLb/+WeceTEtznRWLdZux64XUUn3sqpKFGYR5UQkDLD/X847MPGADDFPC6Xbj0lEn46aOvI+BtLtmQjRQqAf6aMw5X/87R2Do7UV7jHCMqy/D50o0IsvZKNaiHZy9aj4unTWr34+28scqyArx419cynl+7pQbH3vTAgS+90AWuxfQ8PX/Ank+moBfkqQcOcKPEgQmwrI1KVddg011/QsN7n0KkDQQOGQa0TE61rpWJdZthxuIIjB6em+etz0+s3wKjKWxNOdO1um/Su+qgBfzq4GcLrnQN6Zo6lJx3ao/vGmzJ/sWRd/Rh8A0dgOTWHWCe1k0L0jShBfxYd/s92HjngwdrVZupMfbQiwtQdskM9P/edWAuF4Ce3+K4p+w8pEtOnoQ//ftjxKw5ALN9OzlniMSSOHLsYBx+6EBIKTOm2tkX9ik15ZAB+NebX7YbtgkhEfC58cH8NWiMxJEX8GJ3NapEmyR+Nd1OKmfr3mkH+1pMz9PzB/L59ZthhqMIHTYOA358E4KTxkAK2aniwLmw/wMs66qVqq7BopMuR3T5auihEMCAui3bs/9A9LjBOEPdzI9z+rx6vLOVaA4U9XOYedzqn1kCP3uuwcDYkRj52H3qYt6VWuH2J8ZUABX0o2DaUdj+l2fg8nsz64JpDNIwka6th9PEcDAxhlRNHdbe8RuEFyzFIc88oFoNKMBqhTM1PU3f4jycefShePz1z1GcF2g1EbSNMYa0IXD16VPAGINhCuha7vanHewdO2EoCkP+rOsAqC4+j1vHhqpaPPfufHzzvGN2uy5tE9o5Zwe+/EIXuhbT8/T8AXte46h55R3UvjULY994HAXHHw5pigNS1mi/B1h2P//me/+M6PJV8FT0hbB+uel2UJHxHrlfnpddeQh/ey1qnEGaAjKZwvA/3dk8srAXtF45rF2Tf8wUbP/LM9ljJwmAMzDecfHHA4m5XPCGgtj5wmsovfAMlF44vWt0X3ZR10yfiudmzmtVssHGGEMimcbwylKcefQYVZohxz8yVHFRiaH9SjB19EB8MG818gLerKUShJAI+Tz4w3Mf4uxjx6KiJN/pYuyqutK1mJ6n5w/o86VFMOobseFH92HCxy8CB+gavH8DLKmKZprRGOrf+Rh6KE99oa1gQnaQa3Egnu/yOAeEgBmOYuTj9yP/2Cm9pmuwJfuXRsGJR8JdUQ4RjqovSEY+lvOfrkFKSNMEd7lQ8/LbKL1wOiW7Z6FxVYZh8qhKHDVuCD76ah3yAp5W3Wq6xlEfTuHCEycg5PfANMW+177KQggJTWO45oypeHfOynaPl5QSbpeOnQ0RfP3/nsdL91wPj1uHYa1XlzvMXfxaTM/T8/v1+VQaeiiIyJJViCxeidDkMQekFeuA/NyShqm+zFT3pdOYpgGmqYKrx+5D+VXn9crgCoDTTeguL0H+0ZNhRmPdqItUAozDjMbUP6mLMCs7mLp6+lQkU2kYpom0of4YpoloIoWCoA+Xn6ZKM+yvrlZNU8HeGUeOxtRDByIcS0Jr57plCoG8gBcfL1yLy375BHbWh6FbwZVpqiKhQkhI2fxHSAkhJExTtAogDxS6FpPeTJoCIhY/YJ+3f+9S1o1RzwsidNhYiEgM3EXTH3aIczCXDjMag0wbzcGVYfTO4Mqhbgj9br5aBSmcdYtghekuiFQChdOOVg9QZe6suPVLcvoRh+DIsYPg97hRUhBAcb4fpQVBeN0uXHDieAzuW7zv8w7uhj3J8i+vm77btALTFCgI+fH+vFU49bt/xnMz5yOeTDsV4TlXeXf2H84YdJ1D0zhCfs+Ba2+lazHpxZimQaRS8PYvR2D8IapF9wD8yNj/3zCmboQDfnIz6t6chXR9E7RQoOs1oR9szIqu4wmY0RiC4w/ByL/di9DU8VbeTu++GDKNQ5om8o+dgvKrz8f2x56Eu6jcKkZ6sNcuC6a6kZJVOxCcMAblV5+vBif06iC5ffb1wO91483ffROJlGHVt7IG1gqJoBWQ7O8K6BrnMIXAcROG4ruXHI/7nnoPfYrzkM424TpUkJUf8GFbTSO+cf/zeOg/H+GUKSNxxKGDMLiiBEV5fnhcOkwhEE2ksKs+gpWbq/HWZ8sBSDBkHzWZc3QtJr2MhGrtlqk00k31GPqHn0HPCx6w3qD9ftdm3KrGPWE0xrz+GNbf8X+ILlutRoEx1jVvjgcaAyAktKAf/lFDUXLeqeh/y7XQQtaJQEnRANS5JIXAsD/+HHphHnY+9QrSDU1d7zxS1STBvV6Unnua+lIX5KE3FIbdVxKA1+OC13NwBytwK8j6+ddOx8pN1Xht9lKUFYbaD7KEgNelw+d2Yc2WXViydjs0jSPo88DvdUO3uh6TaRPReBKxZBoaZwj6DlwrFl2LSW/DrIYLd0UZRt3/I/S97pLWBXb3swPTLKJ+gqLghCMw6YtXEF6wFGYk1nVbHw40xiANA+4+pfANH+wk3h3IE6FbsLpZtFAAQ3/7E1Teej1iazZ2vfOoxfH0jxqqHqPgqlOs2BTZx1yzA9bawmBNwcMYHvvx5bjizicx88uVKCsMwRQia+V4YU3L4XO74PeqWm2mkAjHEurwA2Ccwe3SVQApsdvJnDnP8TbTtZj0Jta1ODBmBFwlRVbX4IHL3z1w/U5W6wPjHKHJYw/Yx3ZHanoV3o0SuQ8wKVVF74pyuCvKD/badExKp4QE6RwVhx78/cUYg5Cqa/L5X1+L7/zhP3h25jzkB31w61q7dbKElECLUU26xtG8PSrZ3exg1BNjDLrGIISJcDSZtWzFPqFrMemFDsYgsQOa2KOaqAEphfUz9eBfRLsOqxK0NYUF6QBjYBqDPZ9a1zyPrOPJeddcPdIp3AqyfB4X/vHjyzDlkAG498l3UdMQRX7QC13jEEK2mj+xrXZb5CwMKqhiXJ3TiZSBhkgKXrcLp04dhaI8v3pdDltA6VpMeg/VanUw7qsHPnOaAYxRywzJAQpGd6ujLibOmTPKLSefxZizTNnmU3P9WZ1Zh4zn9nIdVAFSAJD4xrlH4+QpI/GH5z7E/z5ZgpqGqMoZc+vNdbkkICGz1g5mzAplrO5OKdV8jMlUCsmUAU3jGNS3CKcdfgguOmkiphwyoPm9e7TWnUDXYkL2q949NI2QHkxIiUgs2e6NWdM4wtEkkql0Tj4vnkwjHEtCtxLEW9I1jkg0iWTayMlntSeWTCFsbXPbOlP2OqT2Yh3sbktTCAztV4JHbrsI3734eLz4wVeY+eVKrN6yE40RVV9H0zh0zsGtMg0ArDpYsGpjCZhC1cPSNY68gBdjhvTFYYcMwMmHjcRRYwcjP+hz3kfTKxHSPTGZLVuTENJt2fn00UQKC1dvbfd1jDGkTRMVJfkY3r90r2/m9uct37ADNY1RZ8RcxmcZJgb2KcKgvkX7LXBYvG47GsLxDtdheP9SVJTm7/U6CCuvzg6eTCGxYuMOzF+5Bcs2VGFjVR12NUQQjiaQSBmQUgVSbpeOkN+D/KAP/UrzMbiiGKMGlmPkgDIMrihpVdDUFAIM2VviCCHdAwVYhBCyF4Q12CLblD3SyqVKm6YTjGmcw+vW2w3q7FY/TpOCE9IjUIBFSA8lAYhOVI63K4zvKyEk5G7G+u/v4OFgrIOEmlRWSOmUYuhofwpn6hy79qdV6T1na0QI6QoowCKEkByTrf9jYfb/CCG9ACW5E0JIjrHW/yGE9EI0RpcQQgghJMcowCKEEEIIyTEKsAghhBBCcowCLEIIIYSQHKMAixBCCCEkxyjAIoQQQgjJMQqwCCGEEEJyjAIsQgghhJAcowCLEEIIISTHKMAihBBCCMkxCrAIIYQQQnKMAixCCCGEkByjAIsQQgghJMcowCKEEEIIyTEKsAghhBBCcowCLEIIIYSQHKMAixBCCCEkxyjAIoQQQgjJMf1grwDpGqSUEFK2eowzBsbYQVojQsdk3wghIdFy/zFovHvtOykBIUWrxxhj4F34HFCnrL3fmf0/QnodJmWbKzjp8oTIvPHuLU3jdPHrJUxTINtZw6DOg90xTJH1ccYAjVNjeG8lAQghAAlwnv0HgH3NYox+JJDegwIsAgCormvCqs07oWsaACBtmBhSUYzK8kJIKemCeADZ+3tHXRNW0zEBAPWDos2VinfQGiWlxILVWxFPpMA5h5ASLk3D5FGV0DsRTB5sUqrAtSmawKK125wA1jBNlBWGMGpgufOag8kUIiO4ThsmEikDUkpoGofP48pocRNSdulWOEJygboIuxH7pjpzzkrMW7EZPq8bUuxlfMxUi8Zlp0xC/7JCvPn5clx/93MoyvODMaCmPoL/u/kc3HHVyTCFhK7RxfBAEUJC0xje/mIFrrvr2ZwcE8MU+OcbX6AhHFetVRIAUzfD8qIQrj3j8A7fn0wb+MernzsBC6Bu7sm0iUF9i3DpyZP2ZZN3i7PO9TNZmwXDFLjx3uexYuMOBLxuJNMGiguCWPTkHcgPeLt8gCqkhMYYlq2vwim3PIKA1w3GGOojMVx2ymQ8/curndcctHUUEhrnkFLio6/W4oP5a7B0/XbsqA0jEk/CNAXcLh35QS8qSvIxenAfTB09EEeOGYSQ33vQ1puQA4UCrG7EvqC+8tFiPPrChwgWBGG2022zO4wxJFMGjhk/BP3LCqFrHKGAB0G/B4wB8VQabhedHgeTS9/3Y2K3cqRNE7975n2s3VoDr8cFp+FaqnNhwvD+GD+sH4Rs3SJhmgKaxjHzy5X49u/+jYDP7XRPa5whEknipKkjcenJk3IetNjrnkwb+O4fX0J1fRgeXUfSMFBeEMSDt14Ij1tvtyUn4HUj5PfA73XDldYQ9Lm7XXe4xpmzDYwxGMKE1+06qOtk51hxzvDGZ8vw+2c/wFertyJlmHBpGlw6h6ZxcMYgpMTWnfX4avVW/O+TJXDrGvoU5+H2K6bhuhlHUEsW6dHoDtoNFQR9KC4pQFG+PyPAMoVE215fzjna9qYwxpBKm3DrqvtJSitPQqg8CZFlOeTAyuUxYQCK8gMoiybgcTcHWLrGsashiqfemoMJt5yX0Q3HrBPniTfnoDDPj4KgD6ZQ55zGGTwuFwqC/r3exs4QQmLWgrXYuKMOfo8LsWQag8oLYQgBT0fvk9LZf/af7kblN3Wd76WEakkHA37859fwyEsfw6VrCPo94IyDcyCVNpFMGTCEAIM6x4I+D9wuHRpjWL+9FrO+WovrZhxhLYsCLNIzUYDVDTVE4qitaUDSMDICrDy/F7rOYV+DGWNoisaQTButXme3YKUMc7efJ6VUn8MABgYJCSnVDbazLRZ24MesZQDo9HI6Gk0nrZsoWizXzs0RMkuwyXirG5X9uUKqX+Qtf02rAGfPt9sevdZ872BOy4m0F4z2E4L3F9MUMEwBzRTOfjGFgN/rxquzl+KHV56M8qKQ06pg59csWrsdHy9cB7/V1WaTksEwhRNwdfjZe3H87eMuhEQo4EFB0Aef2wW3S0co4IEQEqYQrfZzR3lZLdnHyD7edtDQ2WR9e70Y0Grd7eV0NpHbSRBH835R5y32asRjtv2sPsc6H6317ex+ylhfIcA5x60PvIw/v/wJ+hTnOflxKcNAOJZEaWEAIweUoSjPDyGBuqYotu5swK6GCDhj8Lg05Acyuwj39nveahlQ+9M+J9qea3w3255tHdobtZk5SjXz/NndNpmi+VjtzXWVdG0UYHUj9pf8vOPHobKsIGsO1lNvz8W2mka4dU11KyXSOPOoQzFpZGXr5ngrB6uyrFD9s50vtBASuqa1+ZHJWj3f0QXLfl7dLNq+rvnf2ZJlnVcxljXXxA6QtHZykVTeTvYLI2+zPvZYSvs5e1+1Hl3Xue1uu+wsW+T8raPtPlA8Lg3bdzXi3x8sxLcvPFZtW4t9+uSbXyKWSMLnCVg38M4ve1+Ov70fAz43pFSvsf9ICYT8HbVfZWe3CmaOmmwZaLF2j55dNkHjvNU+6uw2tV6Wdf623e4W52JnNS+rvXNv32/Y9vY8+dYc/OWVT9G3JB9pwwTnDMm0Ab/XjR9eOQ3nnzAelWWFzvfDFALVtWHMW7kZr3+6DM+/twAN4XjmGu7l99zWfK5l2+etg2AJZA2a2luHbHb/PW9/efa6ts6j7Px1lXQPFGB1I3YQdOrUUTh16qisr3lv3ipsqKqDx6WBMYZ4MoUzjjoUl586eTfLznzMFAKcMzRG4nht9lJ8tmQjapuiCHjdGD+sApecPBl9ikPt5lG0vEh8vnQDPl28AWu37kJjJA7GGMoKQ5gwvB9OmToK/UrzAaBFa0THo+kG9inCoL5FiCZSePnDRfh86QbsrI9gUN8i3PPNGXC7dKzcVI2d9WHnfYZpYvzw/sgPeDFvxWb875MlWLetBrrGcejgvrj45IkY3LcYhimgaxyGKfDfjxdj1oI12NUQRdDnxsQR/XHpyZNQUhDMut2GKbBmyy6s3rwT67fXYHtNI+qaYogl0xBCIuB1o6IkD2OG9MXxE4ejb0leh8dlf1JBiwRjEl6PC8+9Ow9fP+dIuHTdSWCurgvj1dlLEfR7YQqpWsA628qzl8cfUOdAdV0YqzZXwxQSyVQa3PrVz63W1w/mrYbHrQPWr3+XpmHSqEq42hklKO1WSs4wb8VmvPHZMqzdWgPDNNGvtEB9rw5X3ys7Wb7t+9UNk2PrzgZ8uGANFq/djuq6JifAqCwrxOSRlThx8nDkdZBM3/Lx12YvxfvzVmNHbRM8bh2HDCrH2ceMxejBfZBl8GSHy/p08Xp8tmQDNmyvRX0kDikkvB4dRXkBVBTnYXC/EoyoLMXIAWV7lM8npTof6ppiuO/p95Af9MIwhZNqkB/w4vm7vobJIyud9zTn6nFUlObj7NKxOPvYsfjWBcdi1aZqAHCO6d58z+/95gy4rG1oea59smgdPl+yAeu21aIxGgdnDMX5AYwaWI7jJw7DmCF9wdq8x16H2sYolm3Y4Yw0TRvq3BjWvyTjWC5euw2NkQQ0jTvn1qQRlVZeYPvbNKhPEQb2LUJNYxSvzFqEeSu3oCESQ17Ah8NHD8SFJ05AQchHQVYPQAFWN9RRHSzDEK2CJcYYIrEkDKt7KGOIugR0PfOGJIREQdCHr1Zvw9fuehprt+4C56p7TUqJ596bj4df+gT/+PFlOH7isIyLgf1r98tlG/Grx97CnOWbkEgZ0DXeasi5KSTKC0P4xnlH4/bLp4Fx5gRZ7Y6mq23Cn354Cc45diwu+MnjWLpuO1y6hrRhom9JPn7+tdPgdum458l38fRbc1VXBSQisSRmP/o9zF60Hr/559tImwKa9XkvfbgQD7/0MX5/y3m4+KSJWLNlF2767Yv4YulGMG7fCIDnZs7HIy99gn/+7AocceggJ8iyt3/p+iqc+t1HkEybEFaAynlzrTEhJAzTBGMMpYVBfOOco3H7FdNU10cHLSe5xBiQNgRKCwIoKwxh8brtCPrdWLKuCu/NXY0zjhqNlGHCw3X8+4OvsH1XI0oLg4glUpg4oj/WbatBNJ7qMNDal+NvGCZcuoZ3567C1b9+CkUhP9wuDbqmyi3oGkdtUxQX/OQxa3sY0oaJ0oIgFjx5BwoC3oygRFplGkwh8KM/v4q/v/o5kqm0WhemAs2/vDIbV0+fioduvUC1cLU4HvYNM55M4+4nZuKZd+ZiV30EAJwWXiHtAJRhUN9ifO+SE1rlGbVdVnVdE755/4t4d85Kp9uOgeHlWYvwx+dn4Vc3TMdRYwZ3eCztZW3aUY9b/vAffLxwLVKG2Wo/291mppDQOYeQAv+553qcOnVUp1tQ7VGrr81ego1VdSjJD8Aw1fmdSKbxl9svxuSRlUilDbh0rVW3mt0tLqQEA8OE4f0wYXg/59ipgRR7/j3/5fWnw+XSnevaxwvX4s7H3saC1VuQSpnQNO50sxqmgBASQb8HJ08Zibu+fiYGVxS3arHWGMPnSzbg3B//AwUBL8AYahuiuOXi4/DgrRc6r7GD71sffBmfLFqPPL8XadOEz+3CnMd+gAF9imCYAi5dy7pNj9xxKcYP74fr7nkW23c1qmuQ2kV45p25eOjfH+GRH1yEYycMpUEA3RwFWN0Q5wztlQfN9l1UTdHqIto2wMo2CtG+EL35+XL88YVZqKppREHI53Rn2Bel2sYobvy/5/HRn29Bn6I852Jvt368NGsRvnHf8zAMgVDAgzy/F+FYEsm0AcYYAl4PvB4d8VQaP//bG1i1aSf+9qNLM7r2Wo6mAwCjIIiqmiZcd/ezWLFxB/qW5ENIiXTasC5k6r1et8t5n2EK5Pm9uOeJmZi9eD28bhcCGlc3bWt7YokUvvuHl+DWNfz2mQ+weO02FOX5ICSc12kaQ1VtE2645znMeuQWFOcHWuV5maYAZxwhv45EMo20acKw8twYY3C7NBSEfJBSIpFM46d/fR0NkTjuveksldNzgH6xCinh0nV87czD8YM//dcaTQg88dYcnHHUaLg0Dcm0gWffnQ+f14W0YSIv4MU1Z0zFTx59rcO85H09/vap7dY1FAR9yAt4s+YQ5ll5PCrAEgj5Pe0GqIypVq5r73oG789dhbyAFz63Dl3XrBu/es3f//cZBvYpwo+uOtkJPuzj2xCO4bJfPokP569GUZ4fxfkBMKbOm7Qp4HPr8HlcMIXEjtomfOu3L2Llpmrcf/M5zrGVVn5VJJ7E5b98Ap8t3YjywpDz3bHPmbRh4Od/fQPHTxqGoM8DwzSdVpBm6lYfT6Zw7V1P4/MlG1BWFAK31smuRcWs3DKPR0fA60ZTLNFu0dj22Df5d+eusvYJnM+ZNLI/zj1uHEyhzin73MiWoyQhkTbUZ+sab9UitLffc13jeGbmPHz79/8GJBD0e6AHOVJpE/GkavkM+b3gXOUM/u/jxZi3YjNeuOtrmDC8X6uuWF3nCPmtdWAMqbQBj9uddZ/4PW7ntXaA1ba1suU2SSFRVlqAd+asxIMvfoTtNY1wu3RwxuD3qpGhjDFs29WAS37+L7zx+69j4ohKmEJ2uxkIiEIBFskgpITXrePTxethCvVLLOT3IhJPoimagN/rhpEWyA94sbW6Hk+/PRe3XzENhmlfzBm+Wr0VN93/AlyahoDXDcMUaIgncNyEoTji0EGIJVJ48/Pl2LC9FkGfBxWl+Xj6nbkY2r8EP73m1FaJ0y1H09lJ2U+9PRdp65f6rgbVDRhLpJwbpnpf8+gxKSXSholPF2+AaaqbsUvXUdMQsW6KgMelQ0iJb9z3AhgDXLoGl66+IvXhGPxeF4w0UBj0Yf22Gjz/3nx8+8LjYJjNvzJNIVAfjmFQ3yJMOWQAhvYrQWlBEJrGUR+OYeHqrfhy2Sa43brqOinJx19e/gTnHj8Oh48eeMBGummcIRxLYNqUkZg4oj/mrNiM/IAXHy1Yg0Vrt2Pc0Aq888UKLF1XheJ8P3Y1RHDGkaMxedQARGIpeD3ZLx12ULKvxx8AUoaJhojq4nFbXd42KSWaogkAzS1YHpeWtTtNWq1eNY1RVNU2Qdc4XLoGr1tHdV0EXreubmCMoaQgiH++8QW+fs5RVpK2dCqU3/rQK/hw/mr0LclD2hBIGWq03LhhFSgrDGH99hqs3VKDoN8Dj0tHn+I8PPjCLAztV4JvnHt0i9GXHL995j18ungD+pbkI5U2wBgQiaUwYkAZBvUtwvaaRizfsAOzFqyBN8uNGwBMU0Jzcbw3dzXmLN+EvsV5SJsC8VQKY4ZU4JjxQ1AQ9CGWTGFLdQNWb9mJDdtrUdcY3aMAS1rbn0ybWL15J9wu9R3TOEMiaeDYCcOc4KXlD4T2cpTaq/O6p99z+8fhl8s24ZY/vASf2wVd0yAh0RBOoKwwiMMPHYhkysDCNdsQT5nwunSUFASxsz6M6+9+Fu/96dsoCHqd7122kbvtddJ2ZpRq221y6RyfL9mAZNrA4IpijKgsQ2M0joWrt0LTOHTOEfR70BhJ4PsPvoK3H/gW3LqWtcuadH0UYJF2qK/z4L7FuOemszB5ZCVqGiL46d/ewAfzViPgc6th8m4dnyxah9uvmOZ0t0kAd/9rJhKpNApD6iYViSfxk2tOxR1Xnux8ws0XHouLfvI4lm+sRsDrRmlBEH95eTYuP2UyBlcUI22YaPub3WYKgbRh4vwTxmPG0WNQWqh+7a7ZsrPdhH3OGYQQuPbMw/G9S06A3+vGP179HL995n1V38m6qLpdGuLJNG67/CRce6YqwHnXv97BszPnI8/vgSlUAcWPvlqLb194nNPEDwAFIR8e+v4FOOuYMagoyc+6Hn947gP85l8zVV0mprovXv5woQqwrNaU/Y1B3RALgn5ccdoUfLJwHQpDPtQ2xfD0O3Px25vPwT/f+NLqElavv/bMw1XrRQdZQWo01L4d/8tOmYwhFcWYdtgIzHrkOzCFxC1/+A921kfg1jWkDBNlBUE8eOsFGTlYAa/bWo9MusaRNkzcdP4xuPGco5Af8OGtz5fjR39+FaaU4FLCrWuorgtj/qotOGXKSBimgFvXMGvBGrz04SKUF4WQSqsWSSmBR267CJdMmwTOGcKxJO598l38+aVPEAp4YJoChXl+/OG5D3HBCeNRUhAEAFTVNOLpt+ehMM+PdNoA5xzhWAK3XHw87rjqZAS8bqTSJv7y8if4zT/fcepJZVKPLVtf5TwST6YwdkgFPnzkOxmvNkyB9dtr8PrsZagoVrl/nRutpm7vDeEY6sNxpyVNQrV6DqsszfquJeu2W6/nrVp57YB4xIAy9C3O67DsRHvf89VbdoJbLYL3PDkThmkiaNVoi8SSOH7iMPzp+xeislwN4pmzfBOuv+dZVNeF4YaOgqAPyzfuwN//9yl+eKVduDf7OuSy454x9b07+5ix+P0t56GsUJ0Tr81eim/99kU1iMRQP17nrtyCtz5fgXOPG+vUoyPdCwVYJCs7afPvP74ME0f0BwAU5wdw37fOxrHffKDFKBgNVTVNSCTT8HpcYAxYtXknPl2ichPUzTWFo8cOaXVzBYA+RXn41Q3Tce4d/0DA61KtDA0R/O+TJfjeJSe025rDOUdTNI6fXnMafnjltIzn7ZYC1uo9DNF4CpNHVeKP3z3fefx7l5yAp96ei9rGKFy6Bs4YGqNxnHvcOPzEakkBgJ9cfSpe+2QpDKu5Xtc4tu9qRNrKF7KNqCzDiMqyDvftLRefgEf/+xmaonG4dR0uXcPS9TsAqNaNzpQ9yAXOGKLxJM47fizueWImGiIxBLwevD93Fd6dsxJzV2xGyOrWmzC8H44aN0T90m4nZ0dYidD7evxftY5/3+I89LUCAY/bZc1lp4INj1vHSYeN6PS2apyjIRLHhSeOxz3fPMt5/IrTDsMXyzbiX298icI8v6oCb5jYuL0WAJyb/4vvf+WMPtM0jrrGGG6+4FhcdspkCKlaJ0J+D+755gx8sXQDFq7ZhoDXDY9Lx7ZdDXjny5W44rTDAAAfLliDnfVhFOcHIIRELJ7E5JH98esbzwAAqwK6hu9ecgJmL16PmXNWOt2hWfe73fpibWc4nsTKTdUYUVnWKi9S1zhGVJbh+5c1n5+dye+xW0/iyRQMw7S6ACUgVX5hnt/uqoWzzxhjuP3h/+H9eauRZ5XUcI6FxlHbEMXff3wZbjj7SJhSZr0R7e57DgArN1VjzrJNCPk9MIWEEAL5AR8e/sFF6F9W4LTUTR09EHfecAauvesZeN0qbyvgc+N/Hy/BrZeeCFdG92vL9bA3bLe7qkOMAem0ibLCIB669QIU5vmtgQLAWceMwVert+L+p99TaQfW61//dCnOPW4s1QrrpijAIhnsC9tph4/CxBH9YZgmOFPJwGUFIZQUBJ0RT5wzxJIppAwTXo/KI1iwagsisSQK8/yAVUuqf1mB1eUonZYuANhRF0bQujhqmgrY5q7YDABZ85G4NTLy0MF9cdvlJ7WaRLajdnR75Nn5x4+HhLrQuXQOt0tDeVEIO2qb4Hapi6yQEhdPm6iSlg3VrF+Y50dpYRBbdzZAd7vUdqfSqnq1rmV89saqOny6ZD1WbqxGVW0TIvEkhDXZsmkKpNKGM4JK0zjqmqJIGc2FXw8EzhkSqTRKC4M47/hxeOjfH6E4P4Cd9WHc8seXIKzu4UQyjctPPcyZgqY9Kvcqd8ffvvnEk0ZGK4eUEuFYEn6vK6MOVsYpYA3M0DSG6886UgVE1nZwzjGishSmVRQTgNPiBsAZTbpk3XZ4XLpTFsXt0nDucWOd889uHXPpGs446lB8sWwjQn6PdU9mmLdysxNgLVqzTW2DdQziqTROP2I0ADjLMEwTGuc465gxePPz5c4gi4wNAzC4X7HKoQPgdunYXF2PU7/3Z4waUI7K8gIMqSjG8MoyjB3aF6MG9nG6vvZ0hJrWJmfKOhIwTNP+aysBnxv5AR9CATdMszkfS9O4kwzfnt19zw0h4HHpWLBqK8LxJIqscy0cT+G4I4ehf1kBTCGcgRFCSJx02Aj0L8tHbWMMbl1z9tWmHXUY1j97K5wKdHIT3HDOEU0kcNYxY1CYp4pE65r6QSWExIyjD8Wf/v2xUxvLo+tYtanaSeKnbsLuhwIskoEzNRrx0MEV1o1NFb5jTCWBul1aq4t92wv/1p0Nzg3LEAIhnwevzl6Kl2YtdLqQ7HiIMwafFZjZuTY1DRHr13iWAMsatXT0uMFO3kdG4n6WFiAhJXRdw7D+JWBoLuanMQavPazaem/I58GgvsVWHSzmjIjKuMm1GENvBwCptIk7H3sLT8+ch7qmGCBl1huJz+OyEq+tqvqGqW76BzDAAuCsw1WnT8G/3vzSCTzqwzHomoZEykBleQEuPHE8gI4nWLbl6vjbx7W9BF/NqnnUqrRHtm2EmiqoOC+AIf1KVKFHjTvBnsfd4lhY77GPs8Y56sNx1DRGnS4aQ6gunIrSfLU/rNfarUFDKoqtbjFrGRrD9l2NzvrsqAur+Ryt00fTOAb1LWq1DPV9YxjYpwguJxG/9X7gVqB66tRRGFxRjM3VdSjK80PjbpjCxPyVm/HFso1q4AVXid6HDC7HN889GhedNLHdEhLZ9h+gihj7PC5EE2oEKWMqD6y6Lpy1nEQ0nkJjNA4JAd2aQkcdq+a8yPbs7ntuv3PbrgYIOzhm6tgMrihWy255XBiQH/Cib3E+dtSG4XZp0Jhq1a6uC7cbYKljsdtd1Cn29WVwRUmr/WUXHu1TnIf8oBfReBK6plk/vGKIxpPID/pa17Ah3QIFWCQrCWnNgWffChUVbHAArXOFWl4qk2mz9c2AAaZpZk0YNQGkImqEGGcM0WQKtY1RazRe9ouJkBLlRXl73GLPGeC3cnTAmhudmm8yDFKqVhv7pu98ppWk6nSPtGEHC9978GX8/X+fobwohOI8PySApkjCGcnVfBPvGhdKu8Vn9OA+OGnScLz26TIUBO0RowwN8SS+dubhKC0Mqdd34gKfq+OfUVJkrzEIqVp3/J7Mefx03t6YXCVtBb/OpksVFLmtARDOe62/eN16RjBk520BQDLVZkQkmJVLhozTwuNWo8yyNV/YIyOL8wN4/KeX4+bf/RsrNu0AgwpU3S4dfh9Xid/WII+Fq7fiyl89ieq6ML594XGda8myfljkBbzoV5qPKqu1105+X7h6K1oO/LW/T7/99jmobYzC7dLxz9e/wIsffJW1gnt7OvM9T7U912Dt/zbXLXu9PC69VWAnhNz9bBZtVqC5pbPjt7VHrV/m425dBVX2Yu0W4/RezjdLDj4KsEi7sl12s48Lav1Y0OduvkhYCa0jB5Q7RTXb+9XMAMSSaQypKN7tDzXO9i71tLPN/SzL3zqiWcUrn3t3PvqV5jtFOU0hcf1ZR+DEycNREFS1cGKJNL79+3+jMRrvsJvkQLvmzMPxxmfLnG4Y0yrXcdX0KXu0nANx/IHMltPOyPrZu/ksr1uH26W3KoKaSpuIJVJqPexFSGt0YyzZKildSsDvaw7sAj43nLs2s7okY6lWrS72+yKxJExriphs7BpsU0cPxEd/vgVvfrYcH361Bqs2VWNHbVhNq9UYhVvX4PW4EPB54NZ1/PGFWbjk5EkoLQjutiXLbonUNY7JowbgsyUbVM6TKRD0eZycstKCYKu6WmOHVjjLeH/eKqQN4bQUdtbuvueBFueafRzCsQRki4DU/qspBKKJZIvioqqVNFvQ3fJ9adN0ltfyscZI3NrWzm8RA7PWL/M98WRaBYzWsRBSzbLg2cMJ3knXQUeO5NzgvsVOzoDGGepiCZwydSR+ef30PVqO6q7qGi09HbFb7j9bugFp69cw5wz1TXF8+8LjcO9NZ7V6fTSeVC0iXWjbhJQ4cdJwjB3WD4vWbENewIu6pijOPmYMDh3cN3uR2nbk6vh31CNiF+Y0zOZ55zhjOa8jZlglPfoW51l1izTomoaGSBzrttVgSL9idSw1DaaU0BjH8g07nBGpEioHbVDfYmeZleWFTp4NAEghsWLjDlV0Uwpw2CUYVBK3YZjt5GApdsDg87hw4UkTcOFJEwCoOUt31DZhxcZqPPjiR1i2vgoetxpUUdcYxbL1VThh0nCngGZHWk7T9bf/fqrmS4QqZbKzLow7H3sbj9x2ETRrlJyd52UXXk2kjJz2btmLGtS3GLrWPHrZpWtYsbFa7XvRei7AnfURbKlucIJlUwjVKldW4Cw3YwAHU6ND7e5QIVTJiI3b67ChqhYet97pliwpVYrFcutYA+rcNawRghuqalEfjjlTQBmmibKikBWQ5y4XjBw4NO6T5NyU0QNQnB+AYahuoZDfi/98sBB1TVEA6sJmmCJrkdO5KzZjR20TgH0etHPANUYTLRsmYAqJ8cPVr/h4Mu0EXy+8/xWq6yNw6dpetcLsD6ZVefq6GYcjL+BFcX4ApQVBXHfWkQDQYb6MjVs3p9wdfyspmnNVC0iqRGmdq5pi4VjSqmmlCsbuj2lF7OlgDj90IJL2wASo4Ohfb34JxphVuVx18TRE4vjvR4sR8LtVEAUVAB0zboizzKmHDHC6i00hEfC58eonS9AUTag5RKGS6E1T4MX3v4LX4+qwPlpjJO4Ub22pIOjDqIHlOO/4cfjpNaeqopv2ROiiuY5YZ6gSJ6ql7LQjDkFDWLW+GkIgP+TD0+/MxY//8hoi8aRTRd7uane7VAHWzpxDe7I+ADDlkAEoygvAME1IqfblnBWb8fnSjU4hU42r9Xlu5nzsaohYo4WBRDKNkQPK0K8k38nbzAt4rcR4Ffj63Dq+Wr3FKddhV6n/3bMfIObMZtC57RJSIODzYPai9dZ0PJpTb48zhqfenmtNIK7yPVNpA+OH91cTr1M3YbdEARbJKdMUqCjJx4yjD3Vq4LhdGrbuasTVv35ajaCymuY1jSOZNrBuWw2ee3c+Lv7ZP3HmDx7FjrowALRT+6frKs7zOz+thTUH3FNvzcXO+jB8HlWG4M3Pl+Ouf76DgNcFIbvORdNunbr2zCOw7Jkf4+M/34IlT//YmfOyM9OpcKYChlwdf7vLze3SUFKgJpoGVP5TUzSJq3/9FO59cib++PyHuPuJmfhwwRqVPJ/D08Zuubn8tMMQ9Hmsya4l8vxevP3Fctz+8H+xdmsN6ppimLdyM67+9VPYsrMeHpcaYRuJJzFmSF+cOGm4E2AcO2EYhlQUI5FMg0GVoNhcXY9r73oaX63eirqmGJZv2IEb7n0OS9dXwe91Zf0u2EHBx4vW4aiv/xEPvfgRFq/dhmg81ep1NQ0R/OfDr5wkc3sfFuUH9nh/SAnc/Y0ZKCsMIhpPwWXNcJDn9+KRlz7GtO88jLv++Q5enb0Esxetx/vzVuPx17/A+3NXIeB1O4GincS/t+wZI/qV5uOMow5FQyRhncOq2fCb97+ANz9bjprGKLbXNOKv//0Uv3vuA6drU+MciZSBK6dPdZYFAIMrilEY8qsJxaHm6Fy9eReu/vVTeHfuKjX1zd3P4KUPFyIv4N2jkipSApoVON1wz7P4cMEa1DXFsGlHHe587C28PGuxs0wpVeB14Qnj7Q3e631FDh7qIuxhVLIpa/Wn8+9tHi3YYU5Gm+W3ei1TN8WfXHMqPlqwFpuq61AY8iMU8OCzJRsw/fuPYuTAMqeFY2d9BNt2NTg344DPnTUvqbPr1t6+sJexu9d1tM/a22775cdPHA6/x21NEaKm0vhi6UZM+87DGDmwHI2ROBas2gLOVLXmVNpQSead+sx97yLo8LjZrwHUiKU9Wk7L53J7/O3piY4ZNwTvfLkSRSEfUmkTXo+OuSs245NF66BrHE0NEdx2zamtApk9+S44r0Hr/cw5gykkRg/qg1svPRE//9sbqCjJU3lVXg/++t/P8MJ7XyHo96CuMYqkYSLo94BbuWeGKfCbr8+A1+NSN2MpEfJ78L1LTsA3738BfYrzYBimymWavwafL9mIwjw/IrEkGiNxlfwu225L63V3aRpWbNyBX/z9TXg9OipK8tGnKA8Bnxtpw8T67bXYurMBAZ8HmhX0VZYXYvywCmtwRud+Z9utWIMrivHEL67CZb94Ao3RBPKtSuiFIT/Wb6vBvU+9C51zZ5SjYZrweVyqTh5UDblU2kCqzfRHrc+tTpzvzrl2Cj6cvxo76pqQH/CBe3RU1TTiyjufRFlhEIYpsKs+goDP7VRLr6prwllHj8ElVjkWXdMghER5UQhTRg/E67OXojg/gLRhwu91463Pl1v5ic0jiu26bIyh099PuyzL8o07cOnP/4XiPD9iyTTqmmLI83ucHxTVdWFcfNJEHDl2sFX+hAKs7ohasHoYw1SVj1v+6UxLkLBGGbV6XzvdEkab16VbjMKxc0X6Fufhud9cixGVZaiuCyORTCPk90DXOJatr8KH81fjk0XrsW5bjZPnAgC1TbGM5vA9WbfW+yLzfdm6KbLts2xLb/ualtttCoFDB/fBTecfg6raJqdQa17Ai9qmGD6YtxqfL9kAISR+cd3pagqTRAqGqZZjGJkjmfZ2u9vdHx2sf0tqvrzsw+ilzNwPLWtj5fr42/P3XXfWkZg8shJbdzYilkwhmTLUvI5BHwqCPvhD/oyRn4aReVyz2d1+tgOLO646GbddfhJqG6MIx1WicnG+HwCcYCg/4IVpqumSTCHx6O2XYNphI5z5GdVcngLXnHk4bjj7SGzb1QhhbWdByAe3S0NDOI6maBxFeX5cN+MIa27C7PsbAJJpA8m0gaDfA41zbK9pxJwVm/DBvNWYvWg9ahoiyAt4IaVEQySugr4bz0DI73VyxTrLDjiPGTcEb/7+G5g0oj9qGqKIxJJOMFJeGEJxfgAFIR8K83woLQzB63EhmTLQEIljV30EFaX5GFyh8tKaR+Xt2fnOrYT5/qUFePbOa9C/tBA768JIplVAlxdQRXITKQNF+X5oGkciaaCqtgmnTR2Fv95xqartBTj5chLAD6+YBr/XhXAsYXV3MhSE/CjK8yPgdSOeTOHSUybh0CF90RiJw2xx/djdvovEU7jghAmYPLISTdEE6q33l+QHoFnd3Dvqwhg3rB/u//Y51kThnT8+pGuhFqweJj/gQ3F+AEGvqu3DoSY93h2vW0dJfsAaoq9usj5v9vcVhNRn+Nw6koZoNfEqAGd2+kMH98F7D92Mh178CK98vBibd9QjmTZalEcADJPBresoKQjg8NEDcdJhIzGkn7rw2t0ze7JuLYX8Hud9EhIel561dczeZyGfB4YQcFkX1ZYYAwpDfiRSBrwuDYm0icKQv9XQdCEkfnX9dHhcGh7976eob1I3WW7l6QzpV4JfXT8d5x0/Hk+/MxelhUG4dbWsgpA/4zq6t9udDQNQEPKjOD9hVbKW8HtdWcsudPRLXNc4ivMDcOscnKncqLZVxnN1/O3WASklSguCePX+r+Phlz7GZ0s2YFd9BClDtYDoXBUD9bYJsOzz1O9xIWmYGeepzet2oSQ/4FRyb7ufGZoDvXtvOgtHjR2Mh//zMRav265KSgjptDJpXBWlPXvyCNx2+UmYMKJ/RikExjkgJR669UL0Lc7H3/73KeqccwVw6TpGDijHH757HkoLgnj+vQVqWiUw6JqqZwU0fz9GDSzHJdMmYeWmauyobUIiaagkdCsRXeVnpRDye3D02MG446pTcNyEoXvdMqJZU06NHVqBdx74Fp57dz6ef3cBlm6oQoMVMNg/6jhT1d69bh3lRSGMG9YPpx0+CtOPHK1GMKK5+3lvznd7FOXEEf3x/p9uxu+f+xCvzV6Cqpqm5tF/1us8bh1DK0pwxelTcNN5x1hdps0jKDXrvJ04oj+e+uXV+OHD/8P67bVWy6M6r8uLQrj7G2fh+5ediMt/+QSK8vzI83uRFgJea+LmjtY1nkpj3LAK/OK60/Gt372ITxaus0aKqknifR4dFxw/Hr/9zrkosyYB70xpFNI1MZnLzENy0EWsEWr2nV9KCb+VaNqRVNpELJlyLjZSSvjcrub6PC2EY0kIIez+IDDGEHJqZjUTLS4OsUQKS9ZXYe2WXahtUnWOfB4XSgtCGNinEIMrilHcTk7InqxbS7GEqjDvrJeUCPg8GaPhWu0za0hayOdpdVOUEojEE+oXtfU6zhmCPm/WFoDNO+rx2dINqKpRNYOGVBTj6HFDnByLaNwalt9yWX5vqyBrb7c7GwkgEmu9/owxpzurs0whEIklW51fLk1zRjq1lKvjb39Oy/NLHbPmEQVSSnhdeqsgq7PnaSptIJZMd2o/t9ymFRt3YPlGFdQk0wYCXjcqywpx6JA+GNhHFQ5tr85Uy7JWW6rr8emSDaiqaYTX7cKogeU4etxguF06UmkD8WS61f5261pzPbcWookUNlbVYUt1PapqmxCOJWCaatLkviX5GDWgDCMGlGVsx95qu23rt9dizZad2LqzAeGYqoQf8LpRVhTCwPJCDO5X0qoOVttjui/ne8t1qWuKYcm67Vi/rQaN0QQYYyjJD2DEgDKMH1bhXAvbK09h75tIPImPF67Duq01EFJgQHkhjho7BOVFIev7lHl+2d8ne+7Ap9+Zi5vuf9H5MbarIYI7bzgDt1+hpv5ZtGYbFqzeivpwDPkBHw4bVYnxw/u1Wg/SfVGARfYre5h0Z5KkpZRWzk337rnuqHij2cvyKXJ5/LvK+dGy1lN7hFU3YHcjGzs6Hzo7nY3qzu1clX1pDRzI1YhLuwxFZ44vAKeCu517mEudPddMIcB3U1y24+/w7re3owDrrq/PwK2XngDDGrmbbTsAKsvQE1AXYQ+jvpuZFYw7997OvS9bTN5RkrZm5eWom45stXZ2UrGdJKppnfvMziWUAp3ZF51/Xee22+4ik6J5WxlTXQT2zbSzy9qb7W7Pnhy3PVtOZuJ1y+Xn4vg7y9La339grSuL7cl3YU/2s31ztYOFVttjbYc9PcvuaO2eK81lJ3a3v5u7UuGUsmj7lpbrlcsbN0OL/eHk7mX5bGud1Ta1//n7cr43n2vSWpfW62kn0HdqRCzPXA6zHrffvy/XWntd7DkWnc9lbL+UGyEHBwVYPYz6fu/dF3RPLg57vmxYxQz377q1/czOfF7nX9f5deBqg/d5WTm9GeZoWQfj+O/NOuzJd2Fvtml3wUKnl5Ozc8V+7cG5Qaugct8+OxfnqB1o7e/l7Ml1o72RkZwzdNyWRrozCrAIIYSQ/aDlyEjGsM8jgUn3QgEWIYQQsh/kciQw6X4oyZ0QQgjZD3I5Eph0PxRgEUIIIYTkGIXRhBBCyH6Sy5HApHuhAIsQQgjZTyig6r26d0VHQgghhJAuiAIsQgghhJAcowCLEEIIISTHKMAihBBCCMkxCrAIIYQQQnKMAixCCCGEkByjAIsQQgghJMcowCKEEEIIyTEKsAghhBBCcowquRPSHQhhTblhVYVmAGPc+WdLUghAtJiegzMwnvlbSpoCsKfxYFCv6aDqtDSFqkrN96AytZQdLvOAktZ/Ors+Uqp9ae9Ke5/vyfYTQnotmuyZkO5MyNY3/Lb/zsYJqrJFZ10oIDqIpBBZg1IAndvHhJBejwIsQroyK+CJr9mIxKZtkIYBSAlXWQlCk8dYr4FqybJeG56zCHXvzoaIxuAqL0HelPEITR0HpuutAqiGDz9H46fzIeJxeAdVovjMk+CuKGteXhtNXyyEu7wY3sGVmYFYtqBNShhNEWh+L5jL1f72tX1fZ16zu/fJls1O6m8ikYRMp6GFgu1/FgAIAXAOmTZQ89r7iC5eAZlKwzuoEoWnHQvvwH7ZA9G9Wc/OytVyCCEHDOVgEdKFSSEAAJv/789YMuM6bH3gcWz942NYccV3MX/K2Yit3gBAQpomwBg2/PR3WDz9WsRXr4cUAuEvF2L5Zd9B05cLrQVKpHfVYdFpV2LV9XcgsXErpClQ+8YHmHfYmdj53GsAg1qe9Xrb8ou+haq/P68eNk3VkiOE6mpkDGCsVbejSCax8JiLUPf2R5BCQKaN5u2yX+e8z2z1WdmWrR4Xap/Y7xOi1fvs/eW8hwHSUMuuevRZLDn7RrUubT/P+VwVXIXnLMLcsadi891/QnpXHaRhovaND7Bg6jnYfO+fm7e1nfV01qvd7ROZny9kxj6QbbfXPi6EkC6PcrAI6QakkMg/dgrGvf0EAMBoDGPBEedh3XfvxNi3/gWmaYguXonN9z2KcW8/gcKTj3beazZFYDdUSwksu/BbMKNRTF74JvS85tac+vc/RWLTNvWPLC0lWjAA5nE3P8AZAAYGwIxEwTgH9/ucIIF7vUjXN4Jpmupus7vchADT1N/TtQ3Qgn7wlsvNsmxIQAv6Ac7BrO1njEFrsf6Q0unWS9c1gDEGvTDfyS2TUsJsDLfb9SeFyjFLbqnC4tOuQfk152HYA79s9Zrw3MWof2+22kXcDqgy19P+DKOuAdzvA/d62mxflnVo2+3ImbVktb3c7QL3ebOuOyGk66EAi5DuQErIVBoybUCkUtDzQ+jztYuw9Y+PQcST4D4P4us3gbt1hCaNaX6bKVoFIXVvzULDx1/g8FUfQs8LQqbS6mbPGQqnNQdlWZPiW7S6ME3DutvugW/4IJhNEex89lUY4QjKLpmBwXf9ABACK6+/A2Ykio13PojN9/8V3gEVGPmP+8DcLtS9/RE23fkgRDIFaZgonH4chtx9O8A4mMax7vZ74BsyAEZjGFVPvYj8SRMx6qk/IL5mI9be+hskt+4AIOEbNhDDH/oV3H3LAMZQ+8YH2PiLBwApAKa6Bce++U8kNm3H1gceB4TA4tOugdEUxsCf3oziGdNU8r7GVQuSzrHl93+HVhBygiuZNqzWKCA0ZRxCU8Y5OVrtrWfTnIVY/4N7YDRFIA0DhacdiyH33gHu0gHOsfqmn6Hg+MNRdulZkGkDzKVj050Pgvt9qLz96wCA9Xf8H1wlRUhuq0bDh5/BjCVQftnZGHTn96yDRN2FhHRlFGAR0h1ICebSwVw6NJf62sZXroPm94G5VG5VcOIYMJcLS8+5EZW334jAuEPgHdRfvd26ide++SEChwyHb8RgtUx3c26U3YLTqRs3Y4guW42qfzyPwXfdhjGv/wOxleuxZPo1CIw/BGUXn4myy85G3dsfoWj6CQgdNg7c6wbTNTTOnovll3wHQ3/7YxSfNQ3J7dVYfvktgGFi6O9/BgCILVuD7X95BkPuuR3j33wajHOka+qx+PRrUHTGCRj+8J2AEFh72z1YesFNmPTZS0hV12DVDT/CwJ99ByXnnQqZNhBdtALM5YZ/xGAUnHgEwnMXo//3roNIpRAcd4jaFKvliOkaAKDh/c9QdPrxap8Yptq/GduP7OupaUhurcKS6V9D+ZXnYsAd30RyWzWWnncjRDSBEX+9W33GR1/A06+8eb9DtY5p+SHnI6LL1qDmjZkYevePMe6tf6n9e84N0Avz0P/W65sDQ0JIl0QBFiHdAHPpSFXXou6tjwBIxJavQe3bszD4zu+D6RqkYcA7sB8OfelRrL/jXiy/5DsA5/AOqUTlD25En2svBAAkt1bBXV6iWsSkVAGV/RntjZprb50YR97hE9Hv21cDADz9+qDkvNNQ++p7KLv4TBSdeiy4x438Iyeh8LTjnPdt/OUDqPjm5ej79csAAO6+ZRj9zENYes6NGPiL70LPDwGMITRlHPrdcq3zvk13PQxXSSGG/+lO57ExLz+Kz/pMQWThcmj5eTAbwyiecRI8FSp48Q7sBykkGGcITR6L6PK1KJp+fNsNcfKlRCqFdE29E/zYLXaRr5YhuaUK3OeFnh9CYOKhYC4OMJ6xnht/+Ue4Sgox7EHVAuauKMfIf/wWy87/Bgb+4jvw9OsDPRAA97TuNuQBv+piddYLKDjycAz4ybec5Qy5+3Zs+eNj6Peda8A0vd0BCYSQg48CLEK6AeZ2I7mlClsffBwybaDx4zkoPnsa+t54KaRpOiMEC08+GpPnv4742k2ILFqBnc/8F8u/djNk2kDfGy8FA3MSsrPel/egTINIpRCcOFolYifTYB6X6tLaUgUAMCJRQEqYkaiTnC3TBlJVO1H/zsdYtGCpFcAwiHgCZlMEqaqd0PNDEPEEQhOsZafS4B43osvXILl1BxafdrW1PAamaUjX1CO6bA3KrzgH+cdMwdxRJ6PozBNQcOJRKD3/NNV9KCVELN6ckC4FmKZlbCtjHNA4pCGag1AAta+9j7p3Pka6tgEiFsOU5e8CLh0ikbme4a+WIe/wiVa3rgG4NATHHwLmcSO2Yh08/fpkT7IXQv2x/xlPqpGiQkCkDDC3jtDU8TAbw0hV7YKnsq/q1qSuQkK6JAqwCOkGRDSG0OQxTpJ7fM1GLDjyfGz53d9ReduNTneRTKfBdB2+YQPhGzYQpRecDuOUCLb/7Tn0vfFS+EcNwc4X3lCBBqzGD6sFR7ZIEu80qVq+pF3MVErYlTmdZbHmQqdSSpjRGIrOPBMFxx8BQKpAB4AW8MPTv696D2eAlRwvrSR1MxxBYPRw9L/la5BSgHH1vsrbbkRg7EgAwKEvP4qal99B3duzsPnuh7H5nocx9rXHEJw0pnWlA9amqKq1D5hLh6dfOeJrNljrrV4z8Be3YOAvbsGOx17Ehl894KyzWnHN2QdgzOlWlFLVy2KMgWlcvcZoHklp7RC1u+yRgm0wXVN701mO+tzm5VATFiFdFQVYhHQHnEOapko0TxvwDR+Ewb/5Adbddjf6XHsBXMWFVoCgcqqkaUIaBrjHg8Co4aj/4FMAQOlFZ2LTb/+C+g8+R+HJR1utWSqwYoxBJFOZI/psjLW+l2drOWmZw2X9nfu8zmPc51Uj+3QdxTNOan97WYtAz2rV8Q2uRNMXX6HozBPbfZsW9KP86vNQfvV5kKk05k89B9sefQYj/3YvIEyVZ9XeKEJTgOkaSi86ExvvfABmJKZGLgoBkTbUfpHNOVsZ+8Cqnu8bMgCRr5apgMpqLUxu2wEzFndy4piuQ6RS6v2cAZwjWbUTgcJhzYvWNMTWblLLkQbAGBIbtoC5XXD3Kc38fEJIl0IZkoR0A9IwVVcg54CuQQqBPtdfBFdJITbe+RDAGOrfnY11378LqapdYJoG7vEgunQ1djz5ohPMhKaMQ/+br8Wyi7+Fho/nOC0rZiyOjXc+gC2/+7v6vCz1lmTaUAGDs05Gc92plutpqPdqHg+0gB91b3+EdE0dUtW1AIDKH9yILfc/irq3P3Lel95Vh/r3PoVIpZs/y162FRBV3HQVIotWYtM9jzjrJxJJ1L83G2Y4iuS2ajR+Mtdp3ZGmCZlKq5wzAJ5B/RFbsQ6xFWuRrqmDiCdarTvTVAtcxbeuhH/kECw67UrE12wEOAf3uFXS/Io1MBojTvdeq31grWefr12Ipi8XYte/3wRz6RCJFNb+4C7kHzEJ/pFD1HE4YgJ2vvA6ZDoN7nah5pWZaPpifqtyDlpeEHVvf4C6dz4G97hhNDRhw89/j5LzTgP3eZtrbxFCuiRqwSKkG9BDAej5eeofVncWd7sx6M5bseFnv8OgX9wC7+D+aPjoS9S9NQvuvmWQQiK+bhNKzj0NA3/+HacbcPif7oSrtAgrr/kBPH1LoYWCSO+qA/O4MOzBX1m9Tpk3br0oH1qLJGw9Pw9awN/qNVrIr5LUrfUcct8d2PDz36P+hM/gGzIAh/7nzyi/6jykqnZi1Q0/gndgP2h+H+IbtyI0cTQKpx1lLTvkLJtxVULBf8hQjPnvX7Hmll+h5qW34SopRGpXHWCamPDJv2HUNWDFVbfCXV4KvSCE5NYd8A4biMrv3wAIgZKzT0b9zE+w7OJvQySSGHLv7Si98AwVuNr5WFJC8/sw7p2nsOaWX2Lx6dfAU1EO7vPCaGiCTKcx5J7bnNGXekFem/UUCE0eixF//g3WfvdObHvkKaRr66GFfBj9/CPOZwz40U1o+mwe5k2cAb0wH3mHjUPZhWeiZROhiMVRfMZJ2P7np7Dp7oeR2lYN75BKDLn3h1bNLwquCOnKaKocQroB00rQ1oKB5get9BujrhHc73VaPxIbtiC+bhMAwDdiCLwDKrIu02gMI7poheq6GlAB/+jhHa9DUwTM7XI+x4xEVUtZi+KXIpaAlEIFHS0S5tM1dWCaBr2gOUhM19YjsnA5YAp4BvaDf8Rg5/XZlm3PASjTBpq+XAgzHIG7vBT+McPB3W7rfTFEl66CUd8Id0U5guMPsfZV87qY4ShEIgktFMgsANrmtcnt1YitWAeZTsPdpxSBcaNa5allXU/r/eldtQjPXwo9P4S8Iyc1P2dtv0wbaJw9F8zjRv5RkyFSKci0Ae7zgnGORdOuQP7Rh2HQr76LupmfZC6HWq8I6dIowCKkp2hvvjrRehoXSEAKs3Witv1+KdvNUdqrVWpn0uS9reHU4STMWd/QYp/sSSJ/B691Wrz2dD1bBkXZ5nJsMc0O4xwLT7wcwfGjMOyBX7S/HEJIl0VdhIR0Bx1N9ttizjsAag47u+I6Y5kBE1MJ1JASUtivg3rdbiddbpHo3onJjdXIQsAeWeg8buU7ZXz+brbXHqko7dF3DK2Lo7Z9ruUymRqJ16mJk1u8ttU6thjJ16n1FNJax+yjFp3nnRGYzfT8kJqYWgIinQbTNWfaH0JI10ctWIQQ0gVl7X4khHQbFGARQgghhOQYlWkghJCuyM6JI4R0S5SDRQghXRHlWhHSrVELFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOQYBViEEEIIITlGARYhhBBCSI5RgEUIIYQQkmMUYBFCCCGE5BgFWIQQQgghOUYBFiGEEEJIjlGARQghhBCSYxRgEUIIIYTkGAVYhBBCCCE5RgEWIYQQQkiOUYBFCCGEEJJjFGARQgghhOTY/wMt1ScL3qF6tgAAAABJRU5ErkJggg==" alt="Thermal Methods Group">
     </div>
 
-    <!-- Install Banner -->
     <div class="install-banner" id="installBanner">
         <div class="install-content">
             <span class="install-icon">📲</span>
@@ -599,95 +228,52 @@
     </div>
 
     <main class="main">
-        <!-- Schedule Page -->
         <div class="page active" id="schedulePage">
             <div class="search-bar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
                 <input type="text" placeholder="Search sessions..." id="searchInput">
             </div>
-
             <div class="day-tabs">
                 <button class="day-tab active" data-day="1">Day 1<small>Mon 30 Mar</small></button>
                 <button class="day-tab" data-day="2">Day 2<small>Tue 31 Mar</small></button>
                 <button class="day-tab" data-day="3">Day 3<small>Wed 1 Apr</small></button>
             </div>
-
             <div class="filter-tabs">
                 <button class="filter-tab active" data-track="all">All</button>
                 <button class="filter-tab" data-track="short-course">Short Course</button>
                 <button class="filter-tab" data-track="plenary">Plenary</button>
                 <button class="filter-tab" data-track="research">Research</button>
-                <button class="filter-tab" data-track="ecs">Early Careers</button>
             </div>
-
             <div id="sessionsList"></div>
         </div>
 
-        <!-- Speakers Page -->
         <div class="page" id="speakersPage">
             <div class="card" style="background:#fef3c7; border:1px solid #f59e0b;">
-                <p style="font-size:0.85rem; color:#92400e;">📢 Speaker list is being finalised. Check back for updates.</p>
+                <p style="font-size:0.85rem; color:#92400e;">📢 Speaker list being finalised. Check back soon!</p>
             </div>
             <h2 class="section-title" style="margin-top:16px;">Confirmed Speakers</h2>
             <div id="speakersList"></div>
         </div>
 
-        <!-- Venue Page -->
         <div class="page" id="venuePage">
             <div class="venue-section">
-                <h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Conference Venue
-                </h2>
-                
+                <h2>📍 Conference Venue</h2>
                 <a href="https://my.matterport.com/show/?m=jkxwCWNQWZd" target="_blank" class="card" style="display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit;">
                     <div style="width:60px; height:60px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10" fill="none"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                        <span style="font-size:1.5rem;">🎯</span>
                     </div>
                     <div style="flex:1;">
-                        <h3 style="font-size:1rem; margin:0 0 4px 0; color:var(--primary-dark);">🎯 360° Virtual Tour</h3>
-                        <p style="font-size:0.82rem; color:var(--text-light); margin:0;">Explore the venue before you arrive</p>
+                        <h3 style="font-size:1rem; margin:0 0 4px 0; color:var(--primary);">360° Virtual Tour</h3>
+                        <p style="font-size:0.82rem; color:var(--text-light); margin:0;">Explore venue before you arrive</p>
                     </div>
                 </a>
-
                 <a href="https://www.google.com/maps/search/?api=1&query=University+of+Reading+Palmer+Building+RG6+7BE" target="_blank" class="card" style="display:flex; flex-direction:column; align-items:center; text-decoration:none; padding:24px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c41230" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <span style="margin-top:12px; font-weight:600; color:#1a4d7c; font-size:1rem;">University of Reading</span>
-                    <span style="color:#4a5568; font-size:0.85rem;">Palmer Building, Whiteknights Campus</span>
-                    <span style="background:#c41230; color:white; padding:8px 16px; border-radius:20px; margin-top:12px; font-size:0.8rem; font-weight:600;">📍 Open in Google Maps</span>
+                    <span style="font-size:2.5rem;">📍</span>
+                    <span style="margin-top:12px; font-weight:600; color:var(--primary); font-size:1rem;">University of Reading</span>
+                    <span style="color:var(--text-light); font-size:0.85rem;">Palmer Building, Whiteknights Campus</span>
+                    <span style="background:var(--accent); color:white; padding:8px 16px; border-radius:20px; margin-top:12px; font-size:0.8rem; font-weight:600;">Open in Google Maps</span>
                 </a>
             </div>
-
-            <div class="venue-section">
-                <h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path></svg>
-                    Rooms
-                </h2>
-                <div class="card">
-                    <div class="room-card">
-                        <div class="room-icon">📚</div>
-                        <div class="room-info">
-                            <h4>Palmer 1.03</h4>
-                            <p>Short Course (Monday) • Classroom style</p>
-                        </div>
-                    </div>
-                    <div class="room-card">
-                        <div class="room-icon">🎤</div>
-                        <div class="room-info">
-                            <h4>Palmer 1.09 Lecture Theatre</h4>
-                            <p>Main Conference (Tue-Wed) • Tiered seating</p>
-                        </div>
-                    </div>
-                    <div class="room-card">
-                        <div class="room-icon">🧪</div>
-                        <div class="room-info">
-                            <h4>Exhibition & Poster Area</h4>
-                            <p>Manufacturer displays & refreshments</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="venue-section">
                 <h2>🅿️ Parking</h2>
                 <div class="card">
@@ -695,112 +281,51 @@
                         <p style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 4px;">SAT NAV POSTCODE</p>
                         <p style="font-size: 1.5rem; font-weight: 700; letter-spacing: 2px;">RG6 7BE</p>
                     </div>
-                    <div class="info-row">
-                        <div style="width: 28px; height: 28px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;">1</div>
-                        <div class="info-content"><p style="margin:0;">Enter <strong>RG6 7BE</strong> into your sat nav</p></div>
-                    </div>
-                    <div class="info-row">
-                        <div style="width: 28px; height: 28px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;">2</div>
-                        <div class="info-content"><p style="margin:0;">Follow signs to <strong>Car Park 5</strong> (Visitors)</p></div>
-                    </div>
-                    <div class="info-row" style="border-bottom:none;">
-                        <div style="width: 28px; height: 28px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;">3</div>
-                        <div class="info-content"><p style="margin:0;">Walk to <strong>Palmer Building</strong></p></div>
-                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-light);">Follow signs to Car Park 5 (Visitors), then walk to Palmer Building.</p>
                 </div>
-                <a href="https://www.reading.ac.uk/estates/-/media/project/functions/estates/parking/documents/car-parks-at-the-university-of-reading.pdf" target="_blank" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-                    📥 Download Campus Map (PDF)
-                </a>
             </div>
-
             <div class="venue-section">
                 <h2>🏨 Hotels</h2>
                 <div class="card">
                     <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:12px;">The University has negotiated discounts with local hotels.</p>
-                    <a href="https://www.hospitalityuor.co.uk/wp-content/uploads/sites/45/Venue-Reading-Hotels-near-the-University-of-Reading.pdf" target="_blank" style="color:var(--accent); font-weight:600; font-size:0.9rem;">View Hotel List with Discounts →</a>
-                </div>
-            </div>
-
-            <div class="venue-section">
-                <h2>🚂 Getting Here</h2>
-                <div class="card">
-                    <div class="info-row">
-                        <div class="info-icon">🚂</div>
-                        <div class="info-content">
-                            <h4>By Train</h4>
-                            <p>Reading Station - 30 mins from London Paddington. Direct links from Birmingham, Bristol, Cardiff.</p>
-                        </div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-icon">✈️</div>
-                        <div class="info-content">
-                            <h4>From Heathrow</h4>
-                            <p>RailAir coach every 20-30 mins direct to Reading.</p>
-                        </div>
-                    </div>
-                    <div class="info-row" style="border-bottom:none;">
-                        <div class="info-icon">✈️</div>
-                        <div class="info-content">
-                            <h4>From Gatwick</h4>
-                            <p>Direct train once per hour, ~75 minutes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="venue-section">
-                <h2>🍽️ Conference Dinner</h2>
-                <div class="card">
-                    <div class="info-row" style="border-bottom:none;">
-                        <div class="info-icon">🥂</div>
-                        <div class="info-content">
-                            <h4>Meadow Suite</h4>
-                            <p>Tuesday 31st March evening<br>Included with full conference registration</p>
-                        </div>
-                    </div>
+                    <a href="https://www.hospitalityuor.co.uk/wp-content/uploads/sites/45/Venue-Reading-Hotels-near-the-University-of-Reading.pdf" target="_blank" style="color:var(--accent); font-weight:600; font-size:0.9rem;">View Hotel List →</a>
                 </div>
             </div>
         </div>
 
-        <!-- My Schedule Page -->
         <div class="page" id="mySchedulePage">
             <h2 class="section-title">My Saved Sessions</h2>
             <div id="bookmarkedList">
                 <div class="empty-state">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
-                    <p>No sessions saved yet.<br>Tap the bookmark icon on any session to build your personal schedule.</p>
+                    <p>No sessions saved yet.<br>Tap ☆ on any session to save it.</p>
                 </div>
             </div>
         </div>
 
-        <!-- More Page -->
         <div class="page" id="morePage">
             <h2 class="section-title">Quick Links</h2>
             <div class="quick-links">
                 <a class="quick-link" href="https://events.rsc.org/rsc/3293/register" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+                    <span style="font-size:1.5rem;">📝</span>
                     <span>Register Short Course</span>
                 </a>
                 <a class="quick-link" href="https://events.rsc.org/rsc/3294/register" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+                    <span style="font-size:1.5rem;">🎫</span>
                     <span>Register Conference</span>
                 </a>
                 <a class="quick-link" href="https://www.thermalmethodsgroup.org.uk/tac2026-abstract-submission" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    <span style="font-size:1.5rem;">📄</span>
                     <span>Submit Abstract</span>
                 </a>
                 <a class="quick-link" href="https://www.thermalmethodsgroup.org.uk/tac-2026" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                    <span style="font-size:1.5rem;">🌐</span>
                     <span>Official Website</span>
                 </a>
             </div>
-
             <h2 class="section-title">Registration Fees</h2>
             <div class="card">
                 <h4 style="margin-bottom:8px; color:var(--primary);">Short Course - Monday 30th March</h4>
-                <table class="fee-table">
-                    <tr><td>All attendees</td><td class="price">£70</td></tr>
-                </table>
+                <table class="fee-table"><tr><td>All attendees</td><td class="price">£70</td></tr></table>
                 <h4 style="margin:16px 0 8px; color:var(--primary);">Conference - Tue 31 Mar to Wed 1 Apr</h4>
                 <table class="fee-table">
                     <tr><th>Category</th><th>Fee</th></tr>
@@ -809,43 +334,38 @@
                     <tr><td>Student RSC Member</td><td class="price">£100</td></tr>
                     <tr><td>Student Non-Member</td><td class="price">£150</td></tr>
                 </table>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:12px;">Full conference registration includes conference dinner.</p>
             </div>
-
+            <h2 class="section-title">Install App</h2>
+            <div class="card" id="installCard" style="cursor:pointer;" onclick="showInstallInstructions()">
+                <div style="display:flex; align-items:center; gap:14px;">
+                    <span style="font-size:2rem;">📲</span>
+                    <div>
+                        <h4 style="font-size:0.95rem; margin-bottom:4px;">Add to Home Screen</h4>
+                        <p style="font-size:0.82rem; color:var(--text-light);">Install for offline access</p>
+                    </div>
+                </div>
+            </div>
             <h2 class="section-title">Contact</h2>
             <div class="card">
                 <a href="mailto:tmgrsc@gmail.com" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
-                    <div class="info-icon">📧</div>
+                    <span style="font-size:1.5rem;">📧</span>
                     <div>
                         <h4 style="font-size:0.9rem;">Email TMG</h4>
                         <p style="color:var(--accent);">tmgrsc@gmail.com</p>
                     </div>
                 </a>
             </div>
-
-            <h2 class="section-title">Install App</h2>
-            <div class="card" id="installCard" style="cursor:pointer;" onclick="showInstallInstructions()">
-                <div style="display:flex; align-items:center; gap:14px;">
-                    <div style="width:50px; height:50px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">📲</div>
-                    <div>
-                        <h4 style="font-size:0.95rem; margin-bottom:4px;">Add to Home Screen</h4>
-                        <p style="font-size:0.82rem; color:var(--text-light);">Install for offline access & quick launch</p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:24px;">TAC 2026 App • Thermal Methods Group • RSC</p>
+            <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:24px;">TAC 2026 App • RSC Thermal Methods Group</p>
         </div>
     </main>
 
-    <!-- Bottom Navigation -->
     <nav class="nav">
         <button class="nav-item active" data-page="schedulePage">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             Schedule
         </button>
         <button class="nav-item" data-page="speakersPage">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
             Speakers
         </button>
         <button class="nav-item" data-page="venuePage">
@@ -862,7 +382,6 @@
         </button>
     </nav>
 
-    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="modal">
             <div class="modal-header">
@@ -874,60 +393,46 @@
     </div>
 
     <script>
-        // Conference Data
         const conferenceData = {
             sessions: [
-                // Day 1 - Short Course
-                { id: 1, day: 1, time: "09:00 - 09:30", title: "Registration & Welcome Coffee", speaker: "", room: "Palmer 1.03", track: "break", description: "Collect your badge. Tea, coffee and refreshments available." },
-                { id: 2, day: 1, time: "09:30 - 10:00", title: "Welcome & Introduction to Thermal Methods", speaker: "TMG Committee", room: "Palmer 1.03", track: "short-course", description: "Welcome to the TMG Short Course. Overview of thermal analysis techniques." },
-                { id: 3, day: 1, time: "10:00 - 11:00", title: "Differential Scanning Calorimetry (DSC)", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Fundamentals of DSC including theory, instrumentation, and practical applications." },
-                { id: 4, day: 1, time: "11:00 - 11:30", title: "Morning Break", speaker: "", room: "Palmer 1.03", track: "break", description: "Refreshments and networking." },
-                { id: 5, day: 1, time: "11:30 - 12:30", title: "Thermogravimetric Analysis (TGA)", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Principles of TGA for measuring mass changes. Decomposition and compositional analysis." },
+                { id: 1, day: 1, time: "09:00 - 09:30", title: "Registration & Welcome Coffee", speaker: "", room: "Palmer 1.03", track: "break", description: "Collect your badge." },
+                { id: 2, day: 1, time: "09:30 - 10:00", title: "Welcome & Introduction to Thermal Methods", speaker: "TMG Committee", room: "Palmer 1.03", track: "short-course", description: "Overview of thermal analysis techniques." },
+                { id: 3, day: 1, time: "10:00 - 11:00", title: "Differential Scanning Calorimetry (DSC)", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Fundamentals of DSC." },
+                { id: 4, day: 1, time: "11:00 - 11:30", title: "Morning Break", speaker: "", room: "Palmer 1.03", track: "break", description: "Refreshments." },
+                { id: 5, day: 1, time: "11:30 - 12:30", title: "Thermogravimetric Analysis (TGA)", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Principles of TGA." },
                 { id: 6, day: 1, time: "12:30 - 13:30", title: "Lunch", speaker: "", room: "Palmer 1.03", track: "break", description: "Lunch provided." },
-                { id: 7, day: 1, time: "13:30 - 14:15", title: "Evolved Gas Analysis (EGA)", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "TGA-MS and TGA-FTIR for identifying decomposition products." },
-                { id: 8, day: 1, time: "14:15 - 15:00", title: "Thermomechanical Analysis (TMA) & DMA", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Understanding viscoelastic properties and glass transitions." },
-                { id: 9, day: 1, time: "15:00 - 15:30", title: "Afternoon Break", speaker: "", room: "Palmer 1.03", track: "break", description: "Refreshments." },
-                { id: 10, day: 1, time: "15:30 - 16:15", title: "Calorimetry & Thermomicroscopy", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "Isothermal calorimetry and hot-stage microscopy techniques." },
-                { id: 11, day: 1, time: "16:15 - 17:00", title: "Q&A Panel Discussion", speaker: "All Speakers", room: "Palmer 1.03", track: "short-course", description: "Open Q&A. Bring your questions about techniques or challenges." },
-                
-                // Day 2 - Conference
-                { id: 20, day: 2, time: "08:30 - 09:00", title: "Registration & Coffee", speaker: "", room: "Palmer Foyer", track: "break", description: "Registration for main conference." },
-                { id: 21, day: 2, time: "09:00 - 09:15", title: "Welcome & Opening", speaker: "TMG Chair", room: "Palmer 1.09", track: "plenary", description: "Official opening of TAC 2026." },
-                { id: 22, day: 2, time: "09:15 - 10:00", title: "Keynote Lecture", speaker: "TBC", room: "Palmer 1.09", track: "plenary", description: "Opening keynote presentation." },
-                { id: 23, day: 2, time: "10:00 - 10:30", title: "Coffee & Exhibition", speaker: "", room: "Exhibition Area", track: "break", description: "Visit manufacturer exhibitions and posters." },
-                { id: 24, day: 2, time: "10:30 - 12:30", title: "Pharmaceuticals & Biopharma Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Thermal analysis in pharmaceutical development." },
-                { id: 25, day: 2, time: "12:30 - 13:30", title: "Lunch & Posters", speaker: "", room: "Exhibition Area", track: "break", description: "Lunch and poster viewing." },
-                { id: 26, day: 2, time: "13:30 - 14:15", title: "Manufacturer Technical Updates", speaker: "Various", room: "Palmer 1.09", track: "industry", description: "Updates from equipment manufacturers." },
-                { id: 27, day: 2, time: "14:15 - 15:30", title: "Food & Stability Science Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Food science and stability testing applications." },
-                { id: 28, day: 2, time: "15:30 - 16:00", title: "Afternoon Break", speaker: "", room: "Exhibition Area", track: "break", description: "Refreshments." },
-                { id: 29, day: 2, time: "16:00 - 17:30", title: "Early Careers Session (ECS)", speaker: "Various", room: "Palmer 1.09", track: "ecs", description: "Presentations from early career researchers." },
-                { id: 30, day: 2, time: "19:00 - Late", title: "Conference Dinner", speaker: "", room: "Meadow Suite", track: "social", description: "Evening of networking. Included with registration." },
-                
-                // Day 3
+                { id: 7, day: 1, time: "13:30 - 15:00", title: "Evolved Gas Analysis & DMA", speaker: "TBC", room: "Palmer 1.03", track: "short-course", description: "TGA-MS, TGA-FTIR and DMA techniques." },
+                { id: 8, day: 1, time: "15:00 - 15:30", title: "Afternoon Break", speaker: "", room: "Palmer 1.03", track: "break", description: "Refreshments." },
+                { id: 9, day: 1, time: "15:30 - 17:00", title: "Calorimetry & Q&A Panel", speaker: "All Speakers", room: "Palmer 1.03", track: "short-course", description: "Isothermal calorimetry and open discussion." },
+                { id: 20, day: 2, time: "08:30 - 09:00", title: "Registration & Coffee", speaker: "", room: "Palmer Foyer", track: "break", description: "Registration." },
+                { id: 21, day: 2, time: "09:00 - 09:15", title: "Welcome & Opening", speaker: "TMG Chair", room: "Palmer 1.09", track: "plenary", description: "Official opening." },
+                { id: 22, day: 2, time: "09:15 - 10:00", title: "Keynote Lecture", speaker: "TBC", room: "Palmer 1.09", track: "plenary", description: "Opening keynote." },
+                { id: 23, day: 2, time: "10:00 - 10:30", title: "Coffee & Exhibition", speaker: "", room: "Exhibition Area", track: "break", description: "Visit exhibitions." },
+                { id: 24, day: 2, time: "10:30 - 12:30", title: "Pharmaceuticals & Biopharma Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Thermal analysis in pharma." },
+                { id: 25, day: 2, time: "12:30 - 13:30", title: "Lunch & Posters", speaker: "", room: "Exhibition Area", track: "break", description: "Lunch and posters." },
+                { id: 26, day: 2, time: "13:30 - 15:30", title: "Food & Materials Science", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Food and materials." },
+                { id: 27, day: 2, time: "15:30 - 16:00", title: "Afternoon Break", speaker: "", room: "Exhibition Area", track: "break", description: "Refreshments." },
+                { id: 28, day: 2, time: "16:00 - 17:30", title: "Early Careers Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "ECS presentations." },
+                { id: 29, day: 2, time: "19:00 - Late", title: "Conference Dinner", speaker: "", room: "Meadow Suite", track: "social", description: "Networking evening." },
                 { id: 40, day: 3, time: "09:00 - 09:30", title: "Coffee & Networking", speaker: "", room: "Exhibition Area", track: "break", description: "Morning refreshments." },
                 { id: 41, day: 3, time: "09:30 - 10:15", title: "Invited Lecture", speaker: "TBC", room: "Palmer 1.09", track: "plenary", description: "Invited lecture." },
-                { id: 42, day: 3, time: "10:15 - 11:00", title: "Energetic Materials Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Thermal analysis of energetic materials." },
+                { id: 42, day: 3, time: "10:15 - 11:00", title: "Energetic Materials Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Energetic materials." },
                 { id: 43, day: 3, time: "11:00 - 11:30", title: "Coffee Break", speaker: "", room: "Exhibition Area", track: "break", description: "Refreshments." },
-                { id: 44, day: 3, time: "11:30 - 12:30", title: "Advanced Materials & Polymers", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Polymers and advanced materials." },
+                { id: 44, day: 3, time: "11:30 - 12:30", title: "Advanced Materials & Polymers", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Polymers session." },
                 { id: 45, day: 3, time: "12:30 - 13:30", title: "Lunch", speaker: "", room: "Exhibition Area", track: "break", description: "Final lunch." },
-                { id: 46, day: 3, time: "13:30 - 14:15", title: "Energy Storage Session", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Batteries and energy storage materials." },
-                { id: 47, day: 3, time: "14:15 - 15:00", title: "Life Sciences & Novel Methods", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Life sciences and novel techniques." },
-                { id: 48, day: 3, time: "15:00 - 15:30", title: "Closing & Awards", speaker: "TMG Committee", room: "Palmer 1.09", track: "plenary", description: "Best poster awards and closing remarks." }
+                { id: 46, day: 3, time: "13:30 - 15:00", title: "Energy Storage & Novel Methods", speaker: "Various", room: "Palmer 1.09", track: "research", description: "Batteries and new techniques." },
+                { id: 47, day: 3, time: "15:00 - 15:30", title: "Closing & Awards", speaker: "TMG Committee", room: "Palmer 1.09", track: "plenary", description: "Best poster awards." }
             ],
             speakers: [
-                { id: 1, name: "TMG Committee", title: "Short Course Instructors", affiliation: "Thermal Methods Group", bio: "Experienced thermal analysis practitioners." },
-                { id: 2, name: "Keynote Speaker", title: "To Be Announced", affiliation: "TBC", bio: "Details coming soon." }
+                { id: 1, name: "TMG Committee", title: "Short Course Instructors", affiliation: "Thermal Methods Group" },
+                { id: 2, name: "Keynote Speaker", title: "To Be Announced", affiliation: "TBC" }
             ]
         };
 
-        // State
-        let currentDay = 1;
-        let currentTrack = 'all';
+        let currentDay = 1, currentTrack = 'all';
         let bookmarks = JSON.parse(localStorage.getItem('tac2026-bookmarks') || '[]');
 
-        // DOM Ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const pageId = this.dataset.page;
@@ -940,7 +445,6 @@
                 });
             });
 
-            // Day tabs
             document.querySelectorAll('.day-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     currentDay = parseInt(this.dataset.day);
@@ -950,7 +454,6 @@
                 });
             });
 
-            // Filter tabs
             document.querySelectorAll('.filter-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     currentTrack = this.dataset.track;
@@ -960,49 +463,31 @@
                 });
             });
 
-            // Search
             document.getElementById('searchInput').addEventListener('input', renderSessions);
-
-            // Modal close
             document.getElementById('modalClose').addEventListener('click', closeModal);
             document.getElementById('modalOverlay').addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
 
-            // Initial render
             renderSessions();
         });
 
         function renderSessions() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let sessions = conferenceData.sessions.filter(s => s.day === currentDay);
-            
-            if (currentTrack !== 'all') {
-                sessions = sessions.filter(s => s.track === currentTrack);
-            }
-            
-            if (searchTerm) {
-                sessions = sessions.filter(s => 
-                    s.title.toLowerCase().includes(searchTerm) ||
-                    s.speaker.toLowerCase().includes(searchTerm)
-                );
-            }
+            if (currentTrack !== 'all') sessions = sessions.filter(s => s.track === currentTrack);
+            if (searchTerm) sessions = sessions.filter(s => s.title.toLowerCase().includes(searchTerm) || s.speaker.toLowerCase().includes(searchTerm));
 
             const list = document.getElementById('sessionsList');
-            if (sessions.length === 0) {
-                list.innerHTML = '<div class="empty-state"><p>No sessions found.</p></div>';
-                return;
-            }
+            if (sessions.length === 0) { list.innerHTML = '<div class="empty-state"><p>No sessions found.</p></div>'; return; }
 
             list.innerHTML = sessions.map(s => `
                 <div class="card session-card" onclick="showSession(${s.id})">
-                    ${s.track !== 'break' ? `<button class="bookmark-btn ${bookmarks.includes(s.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleBookmark(${s.id})">
-                        ${bookmarks.includes(s.id) ? '★' : '☆'}
-                    </button>` : ''}
+                    ${s.track !== 'break' ? `<button class="bookmark-btn ${bookmarks.includes(s.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleBookmark(${s.id})">${bookmarks.includes(s.id) ? '★' : '☆'}</button>` : ''}
                     <div class="session-time">${s.time}</div>
                     <div class="session-title">${s.title}</div>
                     ${s.speaker ? `<div class="session-speaker">${s.speaker}</div>` : ''}
-                    <div class="session-meta">
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
                         <span class="session-room">📍 ${s.room}</span>
                         <span class="session-track track-${s.track}">${formatTrack(s.track)}</span>
                     </div>
@@ -1011,10 +496,7 @@
         }
 
         function formatTrack(track) {
-            const labels = {
-                'short-course': 'Short Course', 'plenary': 'Plenary', 'research': 'Research',
-                'industry': 'Industry', 'ecs': 'Early Careers', 'social': 'Social', 'break': 'Break'
-            };
+            const labels = {'short-course':'Short Course','plenary':'Plenary','research':'Research','industry':'Industry','ecs':'Early Careers','social':'Social','break':'Break'};
             return labels[track] || track;
         }
 
@@ -1023,7 +505,7 @@
                 <div class="card" style="display:flex; align-items:center; gap:14px;">
                     <div style="width:50px; height:50px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">${s.name.split(' ').map(n=>n[0]).join('').substring(0,2)}</div>
                     <div>
-                        <h3 style="font-size:0.95rem; color:var(--primary-dark);">${s.name}</h3>
+                        <h3 style="font-size:0.95rem; color:var(--primary);">${s.name}</h3>
                         <p style="font-size:0.82rem; color:var(--text-light);">${s.title}</p>
                         <p style="font-size:0.75rem; color:var(--text-muted);">${s.affiliation}</p>
                     </div>
@@ -1034,18 +516,12 @@
         function renderBookmarked() {
             const saved = conferenceData.sessions.filter(s => bookmarks.includes(s.id));
             const list = document.getElementById('bookmarkedList');
-            
-            if (saved.length === 0) {
-                list.innerHTML = '<div class="empty-state"><p>No sessions saved yet.<br>Tap ☆ on any session to save it.</p></div>';
-                return;
-            }
-
+            if (saved.length === 0) { list.innerHTML = '<div class="empty-state"><p>No sessions saved yet.<br>Tap ☆ on any session.</p></div>'; return; }
             const byDay = {1: [], 2: [], 3: []};
             saved.forEach(s => byDay[s.day].push(s));
             const dayLabels = {1: 'Monday - Short Course', 2: 'Tuesday - Conference', 3: 'Wednesday - Conference'};
-
             let html = '';
-            [1, 2, 3].forEach(day => {
+            [1,2,3].forEach(day => {
                 if (byDay[day].length > 0) {
                     html += `<div class="day-header">${dayLabels[day]}</div>`;
                     html += byDay[day].map(s => `
@@ -1062,11 +538,8 @@
         }
 
         function toggleBookmark(id) {
-            if (bookmarks.includes(id)) {
-                bookmarks = bookmarks.filter(b => b !== id);
-            } else {
-                bookmarks.push(id);
-            }
+            if (bookmarks.includes(id)) { bookmarks = bookmarks.filter(b => b !== id); }
+            else { bookmarks.push(id); }
             localStorage.setItem('tac2026-bookmarks', JSON.stringify(bookmarks));
             renderSessions();
             renderBookmarked();
@@ -1075,7 +548,6 @@
         function showSession(id) {
             const s = conferenceData.sessions.find(x => x.id === id);
             const dayLabels = {1: 'Monday 30th March', 2: 'Tuesday 31st March', 3: 'Wednesday 1st April'};
-            
             document.getElementById('modalTitle').textContent = s.title;
             document.getElementById('modalBody').innerHTML = `
                 <p>${s.description}</p>
@@ -1090,42 +562,33 @@
             document.getElementById('modalOverlay').classList.add('active');
         }
 
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
 
         function showInstallInstructions() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => {
-                    deferredPrompt = null;
-                });
-            } else {
+            if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(() => { deferredPrompt = null; }); }
+            else {
                 document.getElementById('modalTitle').textContent = '📲 Install App';
                 document.getElementById('modalBody').innerHTML = `
                     <div style="background:var(--bg); padding:14px; border-radius:10px; margin-bottom:12px;">
                         <h4 style="margin-bottom:8px;">📱 iPhone / iPad</h4>
-                        <p style="font-size:0.85rem;">1. Tap the <strong>Share</strong> button (square with arrow)</p>
-                        <p style="font-size:0.85rem;">2. Scroll down and tap <strong>"Add to Home Screen"</strong></p>
+                        <p style="font-size:0.85rem;">1. Tap <strong>Share</strong> button (square with arrow)</p>
+                        <p style="font-size:0.85rem;">2. Tap <strong>"Add to Home Screen"</strong></p>
                         <p style="font-size:0.85rem;">3. Tap <strong>"Add"</strong></p>
                     </div>
                     <div style="background:var(--bg); padding:14px; border-radius:10px;">
                         <h4 style="margin-bottom:8px;">🤖 Android</h4>
-                        <p style="font-size:0.85rem;">1. Tap the <strong>menu</strong> (⋮ three dots)</p>
+                        <p style="font-size:0.85rem;">1. Tap <strong>menu</strong> (⋮ three dots)</p>
                         <p style="font-size:0.85rem;">2. Tap <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong></p>
                     </div>
-                    <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted); text-align:center;">The app will appear on your home screen like a regular app!</p>
                 `;
                 document.getElementById('modalOverlay').classList.add('active');
             }
         }
 
-        // Service Worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(e => console.log('SW error', e));
+            navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW error', e));
         }
 
-        // Install prompt
         let deferredPrompt;
         const installBanner = document.getElementById('installBanner');
         const installBtn = document.getElementById('installBtn');
@@ -1140,12 +603,11 @@
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
+                await deferredPrompt.userChoice;
                 deferredPrompt = null;
                 installBanner.classList.remove('show');
             } else {
-                // Fallback for iOS
-                alert('To install:\\n\\n📱 iPhone/iPad: Tap Share button → "Add to Home Screen"\\n\\n🤖 Android: Tap menu (⋮) → "Add to Home Screen"');
+                showInstallInstructions();
             }
         });
 
@@ -1154,15 +616,11 @@
             sessionStorage.setItem('installDismissed', 'true');
         });
 
-        // Show banner for iOS (no beforeinstallprompt event)
         window.addEventListener('load', () => {
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
             const dismissed = sessionStorage.getItem('installDismissed');
-            
-            if (isIOS && !isStandalone && !dismissed) {
-                installBanner.classList.add('show');
-            }
+            if (isIOS && !isStandalone && !dismissed) { installBanner.classList.add('show'); }
         });
     </script>
 </body>
