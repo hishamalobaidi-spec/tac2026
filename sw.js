@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tac2026-v11';
+const CACHE_NAME = 'tac2026-v12';
 const urlsToCache = [
   './',
   './index.html',
@@ -7,7 +7,6 @@ const urlsToCache = [
   './icon-512.png'
 ];
 
-// Install - activate immediately
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -16,14 +15,12 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate - delete ALL old caches and take control
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -34,7 +31,6 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch - ALWAYS network first, cache as backup only
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   
