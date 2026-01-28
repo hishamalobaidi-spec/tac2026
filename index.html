@@ -264,13 +264,13 @@
 {id:60,day:3,time:"12:30",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch break"},
 {id:61,day:3,time:"13:30",title:"TAC 2026 Closing Remarks",speaker:"TMG Committee",room:"TBC",track:"plenary",description:"Conference closing, awards, and thanks"}
 ],speakers:[
-{id:1,name:"Vicky Kett",title:"DSC & MDSC",affiliation:"Queen's University Belfast"},
-{id:2,name:"Gareth Parkes",title:"TG & EGA",affiliation:"University of Huddersfield"},
-{id:3,name:"Duncan Price",title:"TMA & DMA",affiliation:"Edwards Vacuum"},
+{id:1,name:"Hisham Al-Obaidi",title:"TAC 2026 Host",affiliation:"University of Reading"},
+{id:2,name:"Paul Royall",title:"TMG Chair",affiliation:"King's College London"},
+{id:3,name:"Gage Ashton",title:"Thermomicroscopy",affiliation:"University of Huddersfield"},
 {id:4,name:"Simon Gaisford",title:"Calorimetry",affiliation:"University College London"},
-{id:5,name:"Gage Ashton",title:"Thermomicroscopy",affiliation:"University of Huddersfield"},
-{id:6,name:"Paul Royall",title:"TMG Chair",affiliation:"King's College London"},
-{id:7,name:"Hisham Al-Obaidi",title:"TAC 2026 Host",affiliation:"University of Reading"}
+{id:5,name:"Vicky Kett",title:"DSC & MDSC",affiliation:"Queen's University Belfast"},
+{id:6,name:"Gareth Parkes",title:"TG & EGA",affiliation:"University of Huddersfield"},
+{id:7,name:"Duncan Price",title:"TMA & DMA",affiliation:"Edwards Vacuum"}
 ]};
         let currentDay=1,currentTrack='all',bookmarks=JSON.parse(localStorage.getItem('tac2026-bookmarks')||'[]');
         document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.nav-item').forEach(i=>{i.addEventListener('click',function(){const p=this.dataset.page;document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));this.classList.add('active');document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active');if(p==='mySchedulePage')renderBookmarked();if(p==='speakersPage')renderSpeakers();});});document.querySelectorAll('.day-tab').forEach(t=>{t.addEventListener('click',function(){currentDay=parseInt(this.dataset.day);document.querySelectorAll('.day-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active');renderSessions();});});document.querySelectorAll('.filter-tab').forEach(t=>{t.addEventListener('click',function(){currentTrack=this.dataset.track;document.querySelectorAll('.filter-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active');renderSessions();});});document.getElementById('searchInput').addEventListener('input',renderSessions);document.getElementById('modalClose').addEventListener('click',closeModal);document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});renderSessions();});
