@@ -1,24 +1,13 @@
 {
-    "name": "TAC 2026 - Thermal Analysis Conference",
-    "short_name": "TAC 2026",
-    "description": "RSC Thermal Methods Group Conference App",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#1a4d7c",
-    "theme_color": "#1a4d7c",
-    "orientation": "portrait",
-    "icons": [
-        {
-            "src": "./icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "./icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any maskable"
-        }
-    ]
+  "name": "TAC 2026 - Thermal Analysis Conference",
+  "short_name": "TAC 2026",
+  "description": "RSC Thermal Methods Group Conference App",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1a4d7c",
+  "theme_color": "#1a4d7c",
+  "icons": [
+    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
 }

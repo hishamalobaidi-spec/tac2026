@@ -51,8 +51,11 @@
         .track-short-course { background: #dbeafe; color: #1e40af; }
         .track-plenary { background: #fef3c7; color: #92400e; }
         .track-research { background: #d1fae5; color: #065f46; }
+        .track-ecr { background: #fce7f3; color: #9d174d; }
+        .track-manufacturer { background: #ede9fe; color: #5b21b6; }
         .track-social { background: #fed7aa; color: #c2410c; }
         .track-break { background: #e5e7eb; color: #374151; }
+        .track-agm { background: #fef3c7; color: #92400e; }
         .bookmark-btn { position: absolute; top: 12px; right: 8px; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text-muted); }
         .bookmark-btn.active { color: var(--accent); }
         .search-bar { display: flex; align-items: center; background: var(--card-bg); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; box-shadow: var(--shadow); }
@@ -119,12 +122,12 @@
                 <button class="filter-tab" data-track="short-course">Short Course</button>
                 <button class="filter-tab" data-track="plenary">Plenary</button>
                 <button class="filter-tab" data-track="research">Research</button>
+                <button class="filter-tab" data-track="ecr">ECR</button>
             </div>
             <div id="sessionsList"></div>
         </div>
         <div class="page" id="speakersPage">
-            <div class="card" style="background:#fef3c7; border:1px solid #f59e0b;"><p style="font-size:0.85rem; color:#92400e;">📢 Speaker list being finalised.</p></div>
-            <h2 class="section-title" style="margin-top:16px;">Confirmed Speakers</h2>
+            <h2 class="section-title">Confirmed Speakers</h2>
             <div id="speakersList"></div>
         </div>
         <div class="page" id="venuePage">
@@ -166,6 +169,7 @@
         <div class="page" id="morePage">
             <h2 class="section-title">Quick Links</h2>
             <div class="quick-links">
+                <a class="quick-link" href="https://app.sli.do/event/tX22rejAzgQsQRs1R7CSyZ" target="_blank" style="background:linear-gradient(135deg, #1a4d7c 0%, #2a6ba8 100%); color:white;"><span style="font-size:1.5rem;">❓</span><span>Q&A / Polls</span></a>
                 <a class="quick-link" href="https://events.rsc.org/rsc/3293/register" target="_blank"><span style="font-size:1.5rem;">📝</span><span>Register Short Course</span></a>
                 <a class="quick-link" href="https://events.rsc.org/rsc/3294/register" target="_blank"><span style="font-size:1.5rem;">🎫</span><span>Register Conference</span></a>
                 <a class="quick-link" href="https://www.thermalmethodsgroup.org.uk/tac2026-abstract-submission" target="_blank"><span style="font-size:1.5rem;">📄</span><span>Submit Abstract</span></a>
@@ -210,79 +214,74 @@
     </div>
     <script>
         const conferenceData={sessions:[
-// DAY 1 - Monday Short Course
-{id:1,day:1,time:"09:00",title:"Short Course - Registration and Refreshments",speaker:"",room:"TBC",track:"break",description:"Registration and refreshments"},
-{id:2,day:1,time:"09:15",title:"Welcome, Opening Remarks, Housekeeping",speaker:"Paul Royall (TMG Chair) & Hisham Al-Obaidi (Host)",room:"TBC",track:"short-course",description:"Welcome and introduction to the short course"},
-{id:3,day:1,time:"09:30",title:"Differential Scanning Calorimetry & Modulated Techniques (DSC & MDSC)",speaker:"Vicky Kett, Queen's University Belfast",room:"TBC",track:"short-course",description:"Fundamentals and applications of DSC and modulated DSC techniques"},
-{id:4,day:1,time:"10:30",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea and coffee break"},
-{id:5,day:1,time:"10:45",title:"Thermogravimetry and Evolved Gas Analysis (TG & EGA)",speaker:"Gareth Parkes, University of Huddersfield",room:"TBC",track:"short-course",description:"Principles of TGA and evolved gas analysis techniques"},
-{id:6,day:1,time:"11:45",title:"Thermomechanical Methods (TMA and DMA)",speaker:"Duncan Price, Edwards Vacuum",room:"TBC",track:"short-course",description:"Thermal mechanical analysis and dynamic mechanical analysis"},
-{id:7,day:1,time:"12:45",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch break"},
-{id:8,day:1,time:"13:30",title:"Calorimetry",speaker:"Simon Gaisford, University College London",room:"TBC",track:"short-course",description:"Isothermal and solution calorimetry techniques"},
-{id:9,day:1,time:"14:30",title:"Thermomicroscopy",speaker:"Gage Ashton, University of Huddersfield",room:"TBC",track:"short-course",description:"Hot-stage microscopy and thermal imaging techniques"},
-{id:10,day:1,time:"15:30",title:"Afternoon Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea and coffee break"},
-{id:11,day:1,time:"15:45",title:"Panel Discussion",speaker:"All Short Course Speakers",room:"TBC",track:"short-course",description:"Q&A and open discussion with all speakers"},
-
-// DAY 2 - Tuesday Conference Day 1
-{id:20,day:2,time:"09:00",title:"Day 1 – Registration and Refreshments",speaker:"",room:"TBC",track:"break",description:"Registration and refreshments"},
-{id:21,day:2,time:"09:20",title:"Welcome, Opening Remarks, Housekeeping",speaker:"Paul Royall (TMG Chair) & Hisham Al-Obaidi (Host)",room:"TBC",track:"plenary",description:"Official conference opening"},
-{id:22,day:2,time:"09:30",title:"Plenary Lecture",speaker:"TBC",room:"TBC",track:"plenary",description:"Opening plenary lecture (45 mins)"},
-{id:23,day:2,time:"10:15",title:"Manufacturer Quick Introductions",speaker:"Various",room:"TBC",track:"manufacturer",description:"Brief introductions from exhibitors"},
-{id:24,day:2,time:"10:30",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
-{id:25,day:2,time:"11:00",title:"Session 1 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
-{id:26,day:2,time:"11:30",title:"Speaker 1",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:27,day:2,time:"11:50",title:"Speaker 2",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:28,day:2,time:"12:10",title:"ECR Session",speaker:"Chair TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentations"},
-{id:29,day:2,time:"12:25",title:"ECR 2",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
-{id:30,day:2,time:"12:40",title:"ECR 3",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
-{id:31,day:2,time:"12:55",title:"ECR 4",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
-{id:32,day:2,time:"13:10",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch and poster viewing"},
-{id:33,day:2,time:"13:50",title:"TMG Annual General Meeting",speaker:"TMG Committee",room:"TBC",track:"agm",description:"Annual General Meeting of the Thermal Methods Group"},
-{id:34,day:2,time:"14:10",title:"Session 2 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
-{id:35,day:2,time:"14:40",title:"Speaker 4",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:36,day:2,time:"15:00",title:"Speaker 5",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:37,day:2,time:"15:20",title:"Speaker 6",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:38,day:2,time:"15:40",title:"Afternoon Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
-{id:39,day:2,time:"16:00",title:"Session 3 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
-{id:40,day:2,time:"16:30",title:"Speaker 7",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:41,day:2,time:"16:50",title:"Speaker 8",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:42,day:2,time:"17:10",title:"Speaker 9",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:43,day:2,time:"17:30",title:"Day 1 Closing Remarks",speaker:"TMG Committee",room:"TBC",track:"plenary",description:"End of day 1 announcements"},
-{id:44,day:2,time:"19:00",title:"Conference Dinner",speaker:"",room:"TBC",track:"social",description:"Conference dinner and networking"},
-
-// DAY 3 - Wednesday Conference Day 2
-{id:50,day:3,time:"09:00",title:"Day 2 – Refreshments",speaker:"",room:"TBC",track:"break",description:"Morning refreshments"},
-{id:51,day:3,time:"09:20",title:"Session 4 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
-{id:52,day:3,time:"09:50",title:"Speaker 10",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:53,day:3,time:"10:10",title:"Speaker 11",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:54,day:3,time:"10:30",title:"Speaker 12",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:55,day:3,time:"10:50",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
-{id:56,day:3,time:"11:20",title:"Session 5",speaker:"Chair TBC",room:"TBC",track:"research",description:"Research presentations"},
-{id:57,day:3,time:"11:50",title:"Speaker 13",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:58,day:3,time:"12:10",title:"Speaker 14",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:59,day:3,time:"12:30",title:"Speaker 15",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
-{id:60,day:3,time:"12:30",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch break"},
-{id:61,day:3,time:"13:30",title:"TAC 2026 Closing Remarks",speaker:"TMG Committee",room:"TBC",track:"plenary",description:"Conference closing, awards, and thanks"}
-],speakers:[
-{id:1,name:"Hisham Al-Obaidi",title:"TAC 2026 Host",affiliation:"University of Reading"},
-{id:2,name:"Paul Royall",title:"TMG Chair",affiliation:"King's College London"},
-{id:3,name:"Gage Ashton",title:"Thermomicroscopy",affiliation:"University of Huddersfield"},
-{id:4,name:"Simon Gaisford",title:"Calorimetry",affiliation:"University College London"},
-{id:5,name:"Vicky Kett",title:"DSC & MDSC",affiliation:"Queen's University Belfast"},
-{id:6,name:"Gareth Parkes",title:"TG & EGA",affiliation:"University of Huddersfield"},
-{id:7,name:"Duncan Price",title:"TMA & DMA",affiliation:"Edwards Vacuum"}
-]};
+            {id:1,day:1,time:"09:00",title:"Short Course - Registration and Refreshments",speaker:"",room:"TBC",track:"break",description:"Registration and refreshments"},
+            {id:2,day:1,time:"09:15",title:"Welcome, Opening Remarks, Housekeeping",speaker:"Paul Royall (TMG Chair) & Hisham Al-Obaidi (Host)",room:"TBC",track:"short-course",description:"Welcome and introduction to the short course"},
+            {id:3,day:1,time:"09:30",title:"Differential Scanning Calorimetry & Modulated Techniques (DSC & MDSC)",speaker:"Vicky Kett, Queen's University Belfast",room:"TBC",track:"short-course",description:"Fundamentals and applications of DSC and modulated DSC techniques"},
+            {id:4,day:1,time:"10:30",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea and coffee break"},
+            {id:5,day:1,time:"10:45",title:"Thermogravimetry and Evolved Gas Analysis (TG & EGA)",speaker:"Gareth Parkes, University of Huddersfield",room:"TBC",track:"short-course",description:"Principles of TGA and evolved gas analysis techniques"},
+            {id:6,day:1,time:"11:45",title:"Thermomechanical Methods (TMA and DMA)",speaker:"Duncan Price, Edwards Vacuum",room:"TBC",track:"short-course",description:"Thermal mechanical analysis and dynamic mechanical analysis"},
+            {id:7,day:1,time:"12:45",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch break"},
+            {id:8,day:1,time:"13:30",title:"Calorimetry",speaker:"Simon Gaisford, University College London",room:"TBC",track:"short-course",description:"Isothermal and solution calorimetry techniques"},
+            {id:9,day:1,time:"14:30",title:"Thermomicroscopy",speaker:"Gage Ashton, University of Huddersfield",room:"TBC",track:"short-course",description:"Hot-stage microscopy and thermal imaging techniques"},
+            {id:10,day:1,time:"15:30",title:"Afternoon Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea and coffee break"},
+            {id:11,day:1,time:"15:45",title:"Panel Discussion",speaker:"All Short Course Speakers",room:"TBC",track:"short-course",description:"Q&A and open discussion with all speakers"},
+            {id:20,day:2,time:"09:00",title:"Day 1 – Registration and Refreshments",speaker:"",room:"TBC",track:"break",description:"Registration and refreshments"},
+            {id:21,day:2,time:"09:20",title:"Welcome, Opening Remarks, Housekeeping",speaker:"Paul Royall (TMG Chair) & Hisham Al-Obaidi (Host)",room:"TBC",track:"plenary",description:"Official conference opening"},
+            {id:22,day:2,time:"09:30",title:"Plenary Lecture",speaker:"TBC",room:"TBC",track:"plenary",description:"Opening plenary lecture (45 mins)"},
+            {id:23,day:2,time:"10:15",title:"Manufacturer Quick Introductions",speaker:"Various",room:"TBC",track:"manufacturer",description:"Brief introductions from exhibitors"},
+            {id:24,day:2,time:"10:30",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
+            {id:25,day:2,time:"11:00",title:"Session 1 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
+            {id:26,day:2,time:"11:30",title:"Speaker 1",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:27,day:2,time:"11:50",title:"Speaker 2",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:28,day:2,time:"12:10",title:"ECR Session",speaker:"Chair TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentations"},
+            {id:29,day:2,time:"12:25",title:"ECR 2",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
+            {id:30,day:2,time:"12:40",title:"ECR 3",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
+            {id:31,day:2,time:"12:55",title:"ECR 4",speaker:"TBC",room:"TBC",track:"ecr",description:"Early Career Researcher presentation"},
+            {id:32,day:2,time:"13:10",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch and poster viewing"},
+            {id:33,day:2,time:"13:50",title:"TMG Annual General Meeting",speaker:"TMG Committee",room:"TBC",track:"agm",description:"Annual General Meeting of the Thermal Methods Group"},
+            {id:34,day:2,time:"14:10",title:"Session 2 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
+            {id:35,day:2,time:"14:40",title:"Speaker 4",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:36,day:2,time:"15:00",title:"Speaker 5",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:37,day:2,time:"15:20",title:"Speaker 6",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:38,day:2,time:"15:40",title:"Afternoon Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
+            {id:39,day:2,time:"16:00",title:"Session 3 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
+            {id:40,day:2,time:"16:30",title:"Speaker 7",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:41,day:2,time:"16:50",title:"Speaker 8",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:42,day:2,time:"17:10",title:"Speaker 9",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:43,day:2,time:"17:30",title:"Day 1 Closing Remarks",speaker:"TMG Committee",room:"TBC",track:"plenary",description:"End of day 1 announcements"},
+            {id:44,day:2,time:"19:00",title:"Conference Dinner",speaker:"",room:"TBC",track:"social",description:"Conference dinner and networking"},
+            {id:50,day:3,time:"09:00",title:"Day 2 – Refreshments",speaker:"",room:"TBC",track:"break",description:"Morning refreshments"},
+            {id:51,day:3,time:"09:20",title:"Session 4 - Manufacturer Presentations",speaker:"Chair TBC",room:"TBC",track:"manufacturer",description:"Manufacturer presentations"},
+            {id:52,day:3,time:"09:50",title:"Speaker 10",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:53,day:3,time:"10:10",title:"Speaker 11",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:54,day:3,time:"10:30",title:"Speaker 12",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:55,day:3,time:"10:50",title:"Morning Refreshments",speaker:"",room:"TBC",track:"break",description:"Tea, coffee and exhibition viewing"},
+            {id:56,day:3,time:"11:20",title:"Session 5",speaker:"Chair TBC",room:"TBC",track:"research",description:"Research presentations"},
+            {id:57,day:3,time:"11:50",title:"Speaker 13",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:58,day:3,time:"12:10",title:"Speaker 14",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:59,day:3,time:"12:30",title:"Speaker 15",speaker:"TBC",room:"TBC",track:"research",description:"Research presentation"},
+            {id:60,day:3,time:"12:30",title:"Lunch",speaker:"",room:"TBC",track:"break",description:"Lunch break"},
+            {id:61,day:3,time:"13:30",title:"TAC 2026 Closing Remarks",speaker:"TMG Committee",room:"TBC",track:"plenary",description:"Conference closing, awards, and thanks"}
+        ],speakers:[
+            {id:1,name:"Hisham Al-Obaidi",title:"TAC 2026 Host",affiliation:"University of Reading"},
+            {id:2,name:"Paul Royall",title:"TMG Chair",affiliation:"King's College London"},
+            {id:3,name:"Gage Ashton",title:"Thermomicroscopy",affiliation:"University of Huddersfield"},
+            {id:4,name:"Simon Gaisford",title:"Calorimetry",affiliation:"University College London"},
+            {id:5,name:"Vicky Kett",title:"DSC & MDSC",affiliation:"Queen's University Belfast"},
+            {id:6,name:"Gareth Parkes",title:"TG & EGA",affiliation:"University of Huddersfield"},
+            {id:7,name:"Duncan Price",title:"TMA & DMA",affiliation:"Edwards Vacuum"}
+        ]};
         let currentDay=1,currentTrack='all',bookmarks=JSON.parse(localStorage.getItem('tac2026-bookmarks')||'[]');
         document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.nav-item').forEach(i=>{i.addEventListener('click',function(){const p=this.dataset.page;document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));this.classList.add('active');document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active');if(p==='mySchedulePage')renderBookmarked();if(p==='speakersPage')renderSpeakers();});});document.querySelectorAll('.day-tab').forEach(t=>{t.addEventListener('click',function(){currentDay=parseInt(this.dataset.day);document.querySelectorAll('.day-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active');renderSessions();});});document.querySelectorAll('.filter-tab').forEach(t=>{t.addEventListener('click',function(){currentTrack=this.dataset.track;document.querySelectorAll('.filter-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active');renderSessions();});});document.getElementById('searchInput').addEventListener('input',renderSessions);document.getElementById('modalClose').addEventListener('click',closeModal);document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});renderSessions();});
-        function renderSessions(){const q=document.getElementById('searchInput').value.toLowerCase();let s=conferenceData.sessions.filter(x=>x.day===currentDay);if(currentTrack!=='all')s=s.filter(x=>x.track===currentTrack);if(q)s=s.filter(x=>x.title.toLowerCase().includes(q)||x.speaker.toLowerCase().includes(q));const l=document.getElementById('sessionsList');if(s.length===0){l.innerHTML='<div class="empty-state"><p>No sessions.</p></div>';return;}l.innerHTML=s.map(x=>`<div class="card session-card" onclick="showSession(${x.id})">${x.track!=='break'?`<button class="bookmark-btn ${bookmarks.includes(x.id)?'active':''}" onclick="event.stopPropagation();toggleBookmark(${x.id})">${bookmarks.includes(x.id)?'★':'☆'}</button>`:''}<div class="session-time">${x.time}</div><div class="session-title">${x.title}</div>${x.speaker?`<div class="session-speaker">${x.speaker}</div>`:''}<div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="session-room">📍 ${x.room}</span><span class="session-track track-${x.track}">${formatTrack(x.track)}</span></div></div>`).join('');}
-        function formatTrack(t){const l={'short-course':'Short Course','plenary':'Plenary','research':'Research','social':'Social','break':'Break'};return l[t]||t;}
+        function renderSessions(){const q=document.getElementById('searchInput').value.toLowerCase();let s=conferenceData.sessions.filter(x=>x.day===currentDay);if(currentTrack!=='all')s=s.filter(x=>x.track===currentTrack);if(q)s=s.filter(x=>x.title.toLowerCase().includes(q)||x.speaker.toLowerCase().includes(q));const l=document.getElementById('sessionsList');if(s.length===0){l.innerHTML='<div class="empty-state"><p>No sessions found.</p></div>';return;}l.innerHTML=s.map(x=>`<div class="card session-card" onclick="showSession(${x.id})">${x.track!=='break'?`<button class="bookmark-btn ${bookmarks.includes(x.id)?'active':''}" onclick="event.stopPropagation();toggleBookmark(${x.id})">${bookmarks.includes(x.id)?'★':'☆'}</button>`:''}<div class="session-time">${x.time}</div><div class="session-title">${x.title}</div>${x.speaker?`<div class="session-speaker">${x.speaker}</div>`:''}<div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="session-room">📍 ${x.room}</span><span class="session-track track-${x.track}">${formatTrack(x.track)}</span></div></div>`).join('');}
+        function formatTrack(t){const l={'short-course':'Short Course','plenary':'Plenary','research':'Research','ecr':'ECR','manufacturer':'Manufacturer','social':'Social','break':'Break','agm':'AGM'};return l[t]||t;}
         function renderSpeakers(){document.getElementById('speakersList').innerHTML=conferenceData.speakers.map(s=>`<div class="card" style="display:flex;align-items:center;gap:14px;"><div style="width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">${s.name.split(' ').map(n=>n[0]).join('').substring(0,2)}</div><div><h3 style="font-size:0.95rem;color:var(--primary);">${s.name}</h3><p style="font-size:0.82rem;color:var(--text-light);">${s.affiliation}</p><p style="font-size:0.75rem;color:var(--text-muted);">📢 ${s.title}</p></div></div>`).join('');}
-        function renderBookmarked(){const s=conferenceData.sessions.filter(x=>bookmarks.includes(x.id));const l=document.getElementById('bookmarkedList');if(s.length===0){l.innerHTML='<div class="empty-state"><p>No sessions saved.</p></div>';return;}const byDay={1:[],2:[],3:[]};s.forEach(x=>byDay[x.day].push(x));const dayLabels={1:'Monday 30th March (Short Course)',2:'Tuesday - Conference',3:'Wednesday - Conference'};let html='';[1,2,3].forEach(d=>{if(byDay[d].length>0){html+=`<div class="day-header">${dayLabels[d]}</div>`;html+=byDay[d].map(x=>`<div class="card session-card" onclick="showSession(${x.id})"><button class="bookmark-btn active" onclick="event.stopPropagation();toggleBookmark(${x.id})">★</button><div class="session-time">${x.time}</div><div class="session-title">${x.title}</div><span class="session-room">📍 ${x.room}</span></div>`).join('');}});l.innerHTML=html;}
+        function renderBookmarked(){const s=conferenceData.sessions.filter(x=>bookmarks.includes(x.id));const l=document.getElementById('bookmarkedList');if(s.length===0){l.innerHTML='<div class="empty-state"><p>No sessions saved.</p></div>';return;}const byDay={1:[],2:[],3:[]};s.forEach(x=>byDay[x.day].push(x));const dayLabels={1:'Monday 30th March (Short Course)',2:'Tuesday 31st March (Conference)',3:'Wednesday 1st April (Conference)'};let html='';[1,2,3].forEach(d=>{if(byDay[d].length>0){html+=`<div class="day-header">${dayLabels[d]}</div>`;html+=byDay[d].map(x=>`<div class="card session-card" onclick="showSession(${x.id})"><button class="bookmark-btn active" onclick="event.stopPropagation();toggleBookmark(${x.id})">★</button><div class="session-time">${x.time}</div><div class="session-title">${x.title}</div><span class="session-room">📍 ${x.room}</span></div>`).join('');}});l.innerHTML=html;}
         function toggleBookmark(id){if(bookmarks.includes(id)){bookmarks=bookmarks.filter(b=>b!==id);}else{bookmarks.push(id);}localStorage.setItem('tac2026-bookmarks',JSON.stringify(bookmarks));renderSessions();renderBookmarked();}
         function showSession(id){const s=conferenceData.sessions.find(x=>x.id===id);const dayLabels={1:'Monday 30th March (Short Course)',2:'Tuesday 31st March (Conference)',3:'Wednesday 1st April (Conference)'};document.getElementById('modalTitle').textContent=s.title;document.getElementById('modalBody').innerHTML=`<p>${s.description}</p><div class="modal-meta"><div class="modal-meta-row"><span>🕐 ${s.time}</span></div><div class="modal-meta-row"><span>📅 ${dayLabels[s.day]}</span></div><div class="modal-meta-row"><span>📍 ${s.room}</span></div>${s.speaker?`<div class="modal-meta-row"><span>👤 ${s.speaker}</span></div>`:''}</div>${s.track!=='break'?`<button class="btn-primary" onclick="toggleBookmark(${s.id});closeModal();">${bookmarks.includes(s.id)?'★ Saved':'☆ Save'}</button>`:''}`;document.getElementById('modalOverlay').classList.add('active');}
         function closeModal(){document.getElementById('modalOverlay').classList.remove('active');}
         function showInstallInstructions(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;});}else{document.getElementById('modalTitle').textContent='📲 Install App';document.getElementById('modalBody').innerHTML=`<div style="background:var(--bg);padding:14px;border-radius:10px;margin-bottom:12px;"><h4 style="margin-bottom:8px;">📱 iPhone/iPad</h4><p style="font-size:0.85rem;">1. Tap Share button</p><p style="font-size:0.85rem;">2. Tap "Add to Home Screen"</p></div><div style="background:var(--bg);padding:14px;border-radius:10px;"><h4 style="margin-bottom:8px;">🤖 Android</h4><p style="font-size:0.85rem;">1. Tap menu (⋮)</p><p style="font-size:0.85rem;">2. Tap "Add to Home Screen"</p></div>`;document.getElementById('modalOverlay').classList.add('active');}}
-        if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(e=>console.log('SW error',e));}
+        if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(e=>console.log('SW error',e));}
         let deferredPrompt;const installBanner=document.getElementById('installBanner'),installBtn=document.getElementById('installBtn'),dismissBtn=document.getElementById('dismissBtn');
         window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBanner.classList.add('show');});
         installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBanner.classList.remove('show');}else{showInstallInstructions();}});
