@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tac2026-v23';
+const CACHE_NAME = 'tac2026-v25';
 const urlsToCache = [
   './',
   './index.html',
