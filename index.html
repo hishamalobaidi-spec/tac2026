@@ -437,30 +437,42 @@
             if(!isStandalone&&!dismissed){installBanner.classList.add('show');}
         });
     
-// Group header injection
+// Group header injection via MutationObserver
 (function(){
-  var origRS = window.renderSpeakers;
-  window.renderSpeakers = function(){
-    origRS();
-    var list = document.getElementById('speakersList');
+  function injectGroupHeaders(){
+    var list = document.getElementById("speakersList");
     if(!list) return;
+    // Remove any previously injected headers
+    Array.from(list.querySelectorAll(".grp-hdr")).forEach(function(el){ el.parentNode.removeChild(el); });
     var lastGroup = null;
-    var cards = Array.from(list.querySelectorAll('.card'));
-    cards.forEach(function(card){
-      var onclick = card.getAttribute('onclick') || '';
-      var idMatch = onclick.match(/showSpeaker((d+))/);
-      if(!idMatch) return;
-      var spk = conferenceData.speakers.find(function(s){ return s.id === parseInt(idMatch[1]); });
+    Array.from(list.querySelectorAll(".card")).forEach(function(card){
+      var oc = card.getAttribute("onclick") || "";
+      var m = oc.match(/showSpeaker\((\d+)\)/);
+      if(!m) return;
+      var spk = conferenceData.speakers.find(function(s){ return s.id === parseInt(m[1]); });
       if(!spk || !spk.group) return;
       if(spk.group !== lastGroup){
         lastGroup = spk.group;
-        var h = document.createElement('div');
-        h.style.cssText = 'color:#1a3a5c;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:1.2rem 1rem 0.3rem;opacity:0.65;border-top:1px solid #e2e8f0;margin-top:0.5rem';
+        var h = document.createElement("div");
+        h.className = "grp-hdr";
+        h.style.cssText = "color:#1a3a5c;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:1.2rem 1rem 0.3rem;opacity:0.65;border-top:1px solid #e2e8f0;margin-top:0.5rem";
         h.textContent = spk.group;
         list.insertBefore(h, card);
       }
     });
-  };
+  }
+  var observer = new MutationObserver(function(mutations){
+    var hasCards = mutations.some(function(m){
+      return Array.from(m.addedNodes).some(function(n){ return n.classList && n.classList.contains("card"); });
+    });
+    if(hasCards) injectGroupHeaders();
+  });
+  function attach(){
+    var list = document.getElementById("speakersList");
+    if(list){ observer.observe(list,{childList:true}); injectGroupHeaders(); }
+    else setTimeout(attach, 200);
+  }
+  attach();
 })();
 </script>
 </body>
