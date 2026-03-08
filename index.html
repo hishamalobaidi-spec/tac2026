@@ -97,7 +97,21 @@
         .install-step-icon { font-size: 1.8rem; }
         .install-tip { background: linear-gradient(135deg, var(--accent) 0%, #e63950 100%); color: white; padding: 14px; border-radius: 12px; text-align: center; margin-top: 8px; }
         .install-tip p { margin: 0; font-size: 0.85rem; }
-    </style>
+    
+        .venue-info-card { background: var(--card-bg); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); margin-bottom: 12px; }
+        .venue-info-card h3 { font-size: 0.9rem; color: var(--primary); margin: 0 0 6px 0; font-weight: 600; }
+        .venue-info-card p { font-size: 0.85rem; color: var(--text); margin: 4px 0; line-height: 1.5; }
+        .venue-info-card .info-label { font-weight: 600; color: var(--primary); }
+        .venue-info-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .venue-highlight { background: linear-gradient(135deg, var(--primary), #2a6eaa); color: white; border-radius: 12px; padding: 18px; text-align: center; margin-bottom: 12px; }
+        .venue-highlight .highlight-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-bottom: 4px; }
+        .venue-highlight .highlight-value { font-size: 1.4rem; font-weight: 700; }
+        .venue-highlight .highlight-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
+        .wifi-option { border-left: 3px solid var(--primary); padding-left: 12px; margin-bottom: 12px; }
+        .wifi-option:last-child { margin-bottom: 0; }
+        .wifi-option h4 { font-size: 0.85rem; font-weight: 600; margin: 0 0 4px 0; color: var(--text); }
+        .wifi-option p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4; }
+        </style>
 </head>
 <body>
     <header class="header">
@@ -165,12 +179,17 @@
             </div>
             <div class="venue-section">
                 <h2>🅿️ Parking</h2>
-                <div class="card">
-                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 16px; border-radius: 10px; margin-bottom: 16px; text-align: center;">
-                        <p style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 4px;">SAT NAV POSTCODE</p>
-                        <p style="font-size: 1.5rem; font-weight: 700; letter-spacing: 2px;">RG6 7BE</p>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-light);">Follow signs to Car Park 5 (Visitors).</p>
+                <div class="venue-highlight">
+                    <div class="highlight-label">Sat Nav Postcode</div>
+                    <div class="highlight-value">RG6 6EW</div>
+                    <div class="highlight-sub">Shinfield Road Entrance → Car Park 1a</div>
+                </div>
+                <div class="venue-info-card">
+                    <h3>Driving to Campus</h3>
+                    <p>Use <strong>Car Park 1a</strong> at the Shinfield Road entrance (Sports Park). Closer car parks such as Car Park 4 get extremely busy, so we recommend Car Park 1a.</p>
+                    <p><span class="info-label">Weekdays 9am–5pm:</span> Pay and display in Car Park 1a.</p>
+                    <p><span class="info-label">After 5pm / Weekends:</span> No parking permit required if using Car Park 1a.</p>
+                    <p style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:8px;">⚠️ Failure to display a permit may result in a penalty notice.</p>
                 </div>
             </div>
             <div class="venue-section">
@@ -182,33 +201,40 @@
             </div>
             <div class="venue-section">
                 <h2>📶 Wi-Fi Access</h2>
-                <div class="card">
-                    <div>
-                        <p><strong>Venue_Reading Wi-Fi</strong><br>If you booked via Venue Reading, connect to the <strong>Venue_Reading</strong> network. PSK name and password will be provided in the room or by the organiser.</p>
-                        <p><strong>eduroam</strong><br>Available campus-wide. Visitors from eduroam-participating institutions can log in using their home credentials. If your institution uses eduroam, simply select the <strong>eduroam</strong> network and sign in with your usual credentials.</p>
-                        <p><strong>Public Wi-Fi (Sky)</strong><br>An open, unsecured network available in public areas including the Palmer Building (Dolce Vita café). Select <strong>Public_WiFi</strong>, agree to terms and conditions — no password needed.</p>
+                <div class="venue-info-card">
+                    <div class="wifi-option" style="border-left-color:#1a4d7c;">
+                        <h4>📶 Venue_Reading</h4>
+                        <p>Connect to the <strong>Venue_Reading</strong> network. PSK name and password will be provided in the conference room or by the organiser.</p>
+                    </div>
+                    <div class="wifi-option" style="border-left-color:#e8792f;">
+                        <h4>🌐 eduroam</h4>
+                        <p>Available campus-wide. If your institution participates in eduroam, select the <strong>eduroam</strong> network and sign in with your usual credentials.</p>
+                    </div>
+                    <div class="wifi-option" style="border-left-color:#888;">
+                        <h4>📡 Public WiFi (Sky)</h4>
+                        <p>Open network in public areas including the Palmer Building café. Select <strong>Public_WiFi</strong> and agree to terms — no password needed.</p>
                     </div>
                 </div>
             </div>
             <div class="venue-section">
-                <h2>🚂 Getting to the University</h2>
-                <div class="card">
-                    <div>
-                        <p>The conference is held in the <strong>Palmer Building</strong> (building 26) on the University of Reading’s Whiteknights campus.</p>
-                        <p><strong>Post Code:</strong> RG6 6EW</p>
-                        <p><strong>By Public Transport:</strong> The University is well connected by public transport. We encourage delegates to travel sustainably where possible.</p>
-                        <p><strong>By Taxi:</strong> Yell Cars offer 24h taxi services in partnership with the University. Call 0118 9660 660 or 0118 9666 555, or book online at yellcars.com.</p>
+                <h2>🚂 Getting Here</h2>
+                <div class="venue-highlight">
+                    <div class="highlight-label">Palmer Building (No. 26)</div>
+                    <div class="highlight-value">RG6 6EW</div>
+                    <div class="highlight-sub">Whiteknights Campus, University of Reading</div>
+                </div>
+                <div class="venue-info-grid">
+                    <div class="venue-info-card">
+                        <h3>🚌 Public Transport</h3>
+                        <p>The University is well connected by public transport. We encourage delegates to travel sustainably where possible.</p>
+                    </div>
+                    <div class="venue-info-card">
+                        <h3>🚕 By Taxi</h3>
+                        <p>Yell Cars offer 24h services in partnership with the University.</p>
+                        <p><span class="info-label">Call:</span> 0118 9660 660 or 0118 9666 555</p>
                     </div>
                 </div>
             </div>
-            <div class="venue-section">
-                <h2>🍲 Catering</h2>
-                <div class="card">
-                    <div>
-                        <p>Dietary options will only be provided for those who specified requirements prior to the event. If you have allergies or dietary needs (including gluten-free or halal), please notify the organiser as soon as possible.</p>
-                        <p>We are unable to adapt catering requirements on the day of the event.</p>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="page" id="mySchedulePage">
