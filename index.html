@@ -111,6 +111,12 @@
         .wifi-option:last-child { margin-bottom: 0; }
         .wifi-option h4 { font-size: 0.85rem; font-weight: 600; margin: 0 0 4px 0; color: var(--text); }
         .wifi-option p { font-size: 0.8rem; color: #666; margin: 0; line-height: 1.4; }
+        
+        @media print {
+          body > *:not(#permitOverlay) { display: none !important; }
+          #permitOverlay { display: flex !important; position: static !important; background: white !important; padding: 0 !important; }
+          #permitOverlay button { display: none !important; }
+        }
         </style>
 </head>
 <body>
@@ -184,12 +190,20 @@
                     <div class="highlight-value">RG6 7BE</div>
                     <div class="highlight-sub">Shinfield Road Entrance → Car Park 1a</div>
                 </div>
+                <div class="venue-info-card" style="border-left:3px solid #c0392b;">
+                    <p style="font-weight:600;color:#c0392b;margin:0 0 6px 0;">⛔ Do NOT park in Car Park 5 — your permit is not valid there.</p>
+                </div>
                 <div class="venue-info-card">
                     <h3>Driving to Campus</h3>
-                    <p>Use <strong>Car Park 1a</strong> at the Shinfield Road entrance (Sports Park). Closer car parks such as Car Park 4 get extremely busy, so we recommend Car Park 1a.</p>
+                    <p>Enter via the <strong>Shinfield Road entrance</strong> and follow signs to <strong>Car Park 1a</strong> (Sports Park). Closer car parks such as Car Park 4 get extremely busy during the week.</p>
                     <p><span class="info-label">Weekdays 9am–5pm:</span> Pay and display in Car Park 1a.</p>
-                    <p><span class="info-label">After 5pm / Weekends:</span> No parking permit required if using Car Park 1a.</p>
+                    <p><span class="info-label">After 5pm / Weekends:</span> No parking permit required in Car Park 1a.</p>
                     <p style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:8px;">⚠️ Failure to display a permit may result in a penalty notice.</p>
+                </div>
+                <div class="venue-info-card" style="text-align:center;">
+                    <h3>📄 Parking Permit</h3>
+                    <p>Valid: 30 March – 1 April 2026. Print and display clearly on your dashboard.</p>
+                    <button onclick="document.getElementById('permitOverlay').style.display='flex'" style="display:inline-block;padding:10px 24px;background:var(--primary);color:white;border:none;border-radius:8px;font-weight:600;font-size:0.85rem;margin-top:8px;cursor:pointer;">View Parking Permit</button>
                 </div>
             </div>
             <div class="venue-section">
@@ -540,5 +554,34 @@
   attach();
 })();
 </script>
+
+    <div id="permitOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;overflow-y:auto;padding:20px;">
+      <div style="max-width:500px;margin:0 auto;background:white;border-radius:12px;overflow:hidden;">
+        <div style="background:#2d5a27;padding:24px 20px;text-align:center;color:white;">
+          <img src="https://www.reading.ac.uk/wp-content/uploads/2022/07/UoR-logo-white.svg" alt="University of Reading" style="height:40px;margin-bottom:12px;" onerror="this.style.display='none'">
+          <h2 style="margin:0;font-size:1.2rem;font-weight:700;">Venue Reading Parking Permit</h2>
+          <p style="margin:6px 0 0;font-size:0.9rem;opacity:0.9;">TAC 2026 – Advances in Calorimetry and Thermal Analysis</p>
+        </div>
+        <div style="padding:20px;">
+          <div style="background:#c0392b;color:white;padding:10px 16px;border-radius:8px;font-weight:600;text-align:center;margin-bottom:16px;font-size:0.9rem;">⛔ Permit NOT valid in Car Park 5</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div style="background:#f8f9fa;padding:12px;border-radius:8px;"><div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;">Date</div><div style="font-size:0.95rem;font-weight:600;">30/03/26 – 01/04/26</div></div>
+            <div style="background:#f8f9fa;padding:12px;border-radius:8px;"><div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;">Vehicle</div><div style="font-size:0.95rem;font-weight:600;border-bottom:1px dashed #999;min-height:1.3em;"></div></div>
+          </div>
+          <div style="font-size:0.8rem;color:#444;line-height:1.6;border-top:1px solid #eee;padding-top:12px;">
+            <p style="margin:0 0 8px;"><strong>On arrival:</strong></p>
+            <p style="margin:0 0 4px;">• Park in a designated bay in <strong>Car Park 1a</strong></p>
+            <p style="margin:0 0 4px;">• Display this permit clearly from the outside</p>
+            <p style="margin:0 0 4px;">• Do not leave valuables in your car</p>
+            <p style="margin:12px 0 4px;color:#c0392b;font-weight:500;">Failure to comply with parking regulations may incur a charge.</p>
+          </div>
+          <div style="text-align:center;margin-top:16px;font-size:0.75rem;color:#888;">Venue Reading | 0118 378 5657 | info@venuereading.com</div>
+        </div>
+        <div style="padding:12px 20px 20px;display:flex;gap:10px;">
+          <button onclick="window.print()" style="flex:1;padding:12px;background:var(--primary,#1a4d7c);color:white;border:none;border-radius:8px;font-weight:600;font-size:0.85rem;cursor:pointer;">Print Permit</button>
+          <button onclick="document.getElementById('permitOverlay').style.display='none'" style="flex:1;padding:12px;background:#eee;color:#333;border:none;border-radius:8px;font-weight:600;font-size:0.85rem;cursor:pointer;">Close</button>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
